@@ -1,0 +1,6 @@
+{
+  "name": "Gridaan ERP",
+  "description": "Production-grade platform for Dettroin School ERP — Simplifying Business, Amplifying Growth with advanced fee management and custom portal solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
