@@ -74,15 +74,15 @@ export default function Footer({ onPageChange }: FooterProps) {
   return (
     <footer 
       id="brand-footer" 
-      className="bg-[#1a1a1a] text-white pt-[72px] px-6 lg:px-[56px] relative overflow-hidden"
+      className="bg-[#1a1a1a] text-white pt-10 px-6 lg:px-[56px] relative overflow-hidden"
       style={{ borderTop: '3px solid #D90707' }}
     >
       <div className="max-w-7xl mx-auto w-full">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-16 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-16 pb-4">
           
           {/* Column 1: Brand Header details (4 cols) */}
-          <div className="lg:col-span-4 space-y-6" id="footer-col-brand">
+          <div className="lg:col-span-4 space-y-4" id="footer-col-brand">
             <DettroinLogo theme="dark" showTagline={true} />
 
             <p className="font-sans font-normal text-gray-400 text-[13px] leading-relaxed max-w-sm font-light">
@@ -103,16 +103,6 @@ export default function Footer({ onPageChange }: FooterProps) {
                   </a>
                 );
               })}
-            </div>
-
-            {/* Certification Badges */}
-            <div className="flex flex-wrap gap-2.5 pt-2" id="footer-certification-panels">
-              <span className="bg-white/[0.06] text-white/50 border border-white/5 px-2.5 py-1 rounded font-mono text-[9px] font-bold tracking-wider uppercase flex items-center gap-1.5 select-none">
-                🔒 ISO 27001 SECURE
-              </span>
-              <span className="bg-white/[0.06] text-white/50 border border-white/5 px-2.5 py-1 rounded font-mono text-[9px] font-bold tracking-wider uppercase flex items-center gap-1.5 select-none">
-                ⚡ SSL VERIFIED
-              </span>
             </div>
           </div>
 
@@ -149,31 +139,6 @@ export default function Footer({ onPageChange }: FooterProps) {
               <li>
                 <a href="#home" onClick={(e) => handleLinkClick(e, 'home')} className="text-gray-400 hover:text-white transition-colors">
                   Mobile Apps
-                </a>
-              </li>
-              <li>
-                <a href="#home" onClick={(e) => handleLinkClick(e, 'home')} className="text-gray-400 hover:text-white transition-colors">
-                  CRM Solutions
-                </a>
-              </li>
-              <li>
-                <a href="#home" onClick={(e) => handleLinkClick(e, 'home')} className="text-gray-400 hover:text-white transition-colors">
-                  Software Architecture
-                </a>
-              </li>
-              <li>
-                <a href="#home" onClick={(e) => handleLinkClick(e, 'home')} className="text-gray-400 hover:text-white transition-colors">
-                  Customer Experience Plateform
-                </a>
-              </li>
-              <li>
-                <a href="#web-portals" onClick={(e) => handleLinkClick(e, 'web-portals')} className="text-gray-400 hover:text-white transition-colors">
-                  API Integration
-                </a>
-              </li>
-              <li>
-                <a href="#faq-contact" onClick={(e) => handleLinkClick(e, 'faq-contact')} className="text-gray-400 hover:text-white transition-colors">
-                  Support & Maintenance
                 </a>
               </li>
             </ul>
@@ -242,7 +207,7 @@ export default function Footer({ onPageChange }: FooterProps) {
 
         {/* Bottom copyright segment bar */}
         <div 
-          className="py-6 border-t border-white/[0.07] flex flex-col md:flex-row items-center justify-between gap-4 mt-8"
+          className="py-4 border-t border-white/[0.07] flex flex-col md:flex-row items-center justify-between gap-4 mt-4"
           id="footer-bottom-segment"
         >
           <p className="font-sans font-medium text-[#6b7280] text-xs text-center md:text-left selection:bg-brand-red">

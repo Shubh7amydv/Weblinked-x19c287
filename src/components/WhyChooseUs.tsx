@@ -56,7 +56,7 @@ export default function WhyChooseUs() {
                       {/* Thumbnail floating footer tag */}
                       <div className="p-4 bg-[#fafafa] border-t border-gray-100 flex items-center justify-between select-none">
                         <span className="font-mono text-[9px] font-bold text-gray-400 uppercase tracking-widest">
-                          🛡️ VERIFIED HARDWARE SENSOR SYNC
+                          ⚡ CLOUD DATABASE AUTO-SYNC
                         </span>
                         <div className="flex items-center gap-1">
                           <span className="w-2 h-2 bg-[#28c840] rounded-full inline-block animate-ping" />

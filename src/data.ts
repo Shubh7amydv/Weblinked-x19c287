@@ -154,46 +154,46 @@ export const ERP_MODULES: ERPModule[] = [
 
 export const WHY_CHOOSE_US_ROWS = [
   {
-    id: 'fee-module',
+    id: 'setup-migration',
     number: '01',
-    title: 'Smart Invoicing & Instant UPI Reconciliations',
-    tagline: 'FEES COLLECTIONS ENGINE',
-    description: 'Say goodbye to long bank queues and manually matched spreadsheets. Dettroin automates fee invoice routing per standard concession structures and supports real-time payouts via net banking, cards, and UPI.',
+    title: 'Go Live in 4 Hours & Seamless Migration',
+    tagline: 'RAPID ONBOARDING ENGINE',
+    description: 'Your school is fully operational on Dettroin ERP within 4 hours of signup. No lengthy installations, no local IT team required — just log in and start managing. Migrate from any existing database in minutes. Export student records, fee history, and reports to Excel or PDF instantly with no vendor lock-in.',
     bullets: [
-      'In-app reminders sent via SMS, WhatsApp, and notification panels.',
-      'Auto-generated digital receipts with institutional seals sent immediately.',
-      'Comprehensive financial dashboard showing outstanding balances by grade.'
+      'Zero setup friction: 100% cloud-native web console ready for use instantly.',
+      'Import student profiles, parents directories, and billing templates in under 30 minutes.',
+      'Complimentary initial training sessions provided for teachers, clerks, and administrators.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=700',
-    alt: 'Financial accounting team managing student fees on a modern monitor'
+    imageUrl: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=700',
+    alt: 'Modern workspace demonstrating school digital setup and migration'
   },
   {
-    id: 'gps-safety',
+    id: 'uptime-security',
     number: '02',
-    title: 'Real-Time GPS Route Monitoring & Boarding Alerts',
-    tagline: 'SCHOOL FLEET MONITORING',
-    description: 'Safety is non-negotiable. Dettroin links on-board hardware to parents and admin boards, letting you watch school bus positions, monitor delays, and receive instant alert triggers.',
+    title: '99.99% Uptime SLA & Encrypted Security',
+    tagline: 'ENTERPRISE INFRASTRUCTURE',
+    description: 'We back our platform with a 99.99% uptime Service Level Agreement. Your school operations never stop — not during admissions, not during exams, not ever. Your school\'s data is encrypted end-to-end, stored on secure Indian servers, and backed up automatically. ISO 27001 certified and fully compliant with Indian data protection norms.',
     bullets: [
-      'Live route mapping with Estimated Time of Arrival (ETA) updates.',
-      'RFID scans notify parents when their child boards or deboards.',
-      'In-dashboard logging of driving speed, abrupt braking, and fuel consumption.'
+      'Cloud-native architecture powered by real-time databases and failover systems.',
+      'ISO 27001 certified data practices keeping parents and student profiles safe.',
+      'Bank-grade AES-256 encryption at rest and secure SSL connections in transit.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1562774053-701939374585?w=700',
-    alt: 'A school transport bus driving on the road under safe supervision'
+    imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=700',
+    alt: 'High tech server room representing school database uptime SLA and security'
   },
   {
-    id: 'attendance-bio',
+    id: 'automation-support',
     number: '03',
-    title: 'Biometric & RFID Gateways for Verified Classrooms',
-    tagline: 'CAMPUS ACCESS CONTROLS',
-    description: 'Keep your campus secure and attendance tracking effortless. Hardware checkpoints synchronize automatically with the academic cloud, sending automated alerts to custom parameters within minutes.',
+    title: 'Experience the Automation Jump & 24x7 Support',
+    tagline: 'ALWAYS-ON CUSTOMER CARE',
+    description: 'Eliminate repetitive admin work overnight. Fee reminders, attendance alerts, report card generation, and WhatsApp invoices — all automated so your staff focuses on students. Backed by round-the-clock support via call, WhatsApp, and chat in Hindi and English. A real person picks up every time, day or night.',
     bullets: [
-      'Zero proxy cards: fingerprint, face-recognition or smartcards.',
-      'Instantly reduces teacher registration drafting by 15 minutes daily.',
-      'Facia matching algorithms work offline and sync post-reconnect.'
+      'Instant human support available 24/7/365 with fluent bilingual specialists.',
+      'Automated dispatch logs for parent notification cards and WhatsApp notifications.',
+      'Dynamic real-time dashboards mapping billing recovery, schedules, and alerts.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1595853035070-59a39fe84de3?w=700',
-    alt: 'Student scanning school ID badge at biometric sensor gateway'
+    imageUrl: 'https://images.unsplash.com/photo-1521791136368-1a851900d14b?w=700',
+    alt: 'Customer support specialist working on school queries at desk'
   }
 ];
 

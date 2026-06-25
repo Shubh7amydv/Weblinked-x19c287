@@ -12,19 +12,22 @@ function SchoolLogo({ name, src }: SchoolLogoProps) {
 
   if (error) {
     return (
-      <div className="flex items-center justify-center h-[44px] px-5 bg-gray-100/90 border border-gray-200/50 rounded-xl text-gray-500 font-sans font-bold text-xs uppercase tracking-wider whitespace-nowrap select-none">
-        {name}
+      <div className="flex items-center gap-2 h-[44px] px-4 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 border border-blue-100/60 rounded-xl text-blue-700 font-sans font-bold text-[10.5px] uppercase tracking-wider whitespace-nowrap select-none shadow-sm hover:shadow-md transition-all duration-300">
+        <GraduationCap className="w-4 h-4 text-blue-600 shrink-0" />
+        <span>{name}</span>
       </div>
     );
   }
 
   return (
-    <img
-      src={src}
-      alt={`${name} Logo`}
-      onError={() => setError(true)}
-      className="h-[44px] w-auto object-contain select-none max-w-[200px]"
-    />
+    <div className="flex items-center justify-center h-[44px] px-4 bg-white/40 border border-gray-100/50 rounded-xl shadow-xs">
+      <img
+        src={src}
+        alt={`${name} Logo`}
+        onError={() => setError(true)}
+        className="h-[34px] w-auto object-contain select-none max-w-[180px] filter grayscale hover:grayscale-0 transition-all duration-300"
+      />
+    </div>
   );
 }
 
@@ -47,7 +50,7 @@ const schoolLogos = [
   },
   {
     name: 'Amity International School',
-    src: ''
+    src: 'https://upload.wikimedia.org/wikipedia/commons/8/8a/Amity_University_logo.png'
   },
   {
     name: 'The Doon School',
@@ -55,11 +58,11 @@ const schoolLogos = [
   },
   {
     name: 'Bal Bharati Public School',
-    src: ''
+    src: 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Bal_Bharati_Public_School_logo.png'
   },
   {
     name: 'St. Xavier\'s School',
-    src: ''
+    src: 'https://upload.wikimedia.org/wikipedia/en/2/2c/St._Xavier%27s_School%2C_Ranchi_Logo.png'
   }
 ];
 
@@ -92,7 +95,7 @@ export default function Hero({ onCtasClick, onPlayVideo, onPageChange }: HeroPro
   ];
 
   const statTiles = [
-    { number: '11+', label: 'Successful Years', icon: GraduationCap },
+    { number: '6+', label: 'Successful Years', icon: GraduationCap },
     { number: '300+', label: 'Happy Clients', icon: Users },
     { number: '99%', label: 'Customer Satisfaction', icon: Star },
     { number: '1500+', label: 'Reports', icon: FileText },
