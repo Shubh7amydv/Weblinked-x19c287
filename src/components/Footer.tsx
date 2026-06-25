@@ -229,11 +229,7 @@ export default function Footer({ onPageChange }: FooterProps) {
             <ul className="space-y-4 font-sans text-[12.8px] text-gray-400 pr-2">
               <li className="flex gap-2.5 items-start">
                 <MapPin className="w-4.5 h-4.5 text-brand-red shrink-0 mt-0.5" />
-                <span>302, Iscon Crossroad Heights, Satellite, Ahmedabad, India</span>
-              </li>
-              <li className="flex gap-2.5 items-start">
-                <PhoneCall className="w-4.5 h-4.5 text-brand-red shrink-0 mt-0.5" />
-                <span className="truncate">+91 97421 XXXXX (Sales PRI)</span>
+                <span>Delhi, India</span>
               </li>
               <li className="flex gap-2.5 items-start">
                 <Mail className="w-4.5 h-4.5 text-brand-red shrink-0 mt-0.5" />

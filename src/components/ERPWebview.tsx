@@ -5,15 +5,17 @@ import {
   Map, 
   Bell, 
   Plus, 
-  Search, 
   TrendingUp, 
-  AlertTriangle,
   CheckCircle,
-  Clock,
   Send,
   Bus,
   MapPin,
-  CheckSquare
+  CheckSquare,
+  BarChart3,
+  Minus,
+  Square,
+  X,
+  Activity
 } from 'lucide-react';
 
 // Data models for interactive mock state
@@ -50,7 +52,7 @@ interface SandboxBus {
 }
 
 export default function ERPWebview() {
-  const [activeTab, setActiveTab] = useState<'students' | 'fees' | 'gps' | 'broadcaster'>('students');
+  const [activeTab, setActiveTab] = useState<'analytics' | 'students' | 'fees' | 'gps' | 'broadcaster'>('analytics');
 
   // Interactive Student State
   const [studentsList, setStudentsList] = useState<SandboxStudent[]>([
@@ -84,7 +86,6 @@ export default function ERPWebview() {
     { time: '09:00 AM', target: 'All Teachers', text: 'Monthly roster evaluation meeting slated for Room 402 at 02:00 PM today.', type: 'SMS Gateway' },
   ]);
 
-  const [searchFilter, setSearchFilter] = useState('');
   const [logsList, setLogsList] = useState<string[]>(['System Ready. Initialized Admin Account Session #0912.']);
 
   // Log dispatch utility
@@ -200,45 +201,64 @@ export default function ERPWebview() {
           </p>
         </div>
 
-        {/* Dashboard Console Container */}
+        {/* Dashboard Console Container (Windows re-themed, White themed screen) */}
         <div 
-          className="bg-slate-950 border-1.5 border-slate-800 rounded-2xl overflow-hidden transition-all duration-300 transform"
-          style={{ 
-            borderTop: '4px solid #3b82f6',
-            boxShadow: '0 40px 80px rgba(15,23,42,0.4)'
-          }}
+          className="bg-white border border-slate-200 rounded-xl overflow-hidden transition-all duration-300 transform shadow-2xl shadow-slate-200"
           id="sandbox-dashboard-box"
         >
-          {/* Console Header Bar */}
-          <div className="bg-slate-900 border-b border-slate-800 px-6 py-4 flex items-center justify-between select-none">
+          {/* Windows Title Bar */}
+          <div className="bg-slate-100 border-b border-slate-200 pl-6 pr-0 py-0 flex items-center justify-between select-none h-10">
             <div className="flex items-center gap-2">
-              <span className="w-3.5 h-3.5 bg-[#ff5f57] rounded-full inline-block" />
-              <span className="w-3.5 h-3.5 bg-[#febc2e] rounded-full inline-block" />
-              <span className="w-3.5 h-3.5 bg-[#28c840] rounded-full inline-block" />
-              <span className="font-mono text-xs text-slate-300 font-semibold ml-3 bg-slate-800 px-2.5 py-0.5 rounded">
+              <Activity className="w-4 h-4 text-blue-600 shrink-0" />
+              <span className="font-sans font-semibold text-[12.5px] text-slate-700">
+                Dettroin Core Enterprise — Client Dashboard v3.2
+              </span>
+              <span className="font-mono text-[9px] text-emerald-700 font-bold ml-2 bg-emerald-100/60 border border-emerald-250 px-2 py-0.5 rounded">
                 SECURE SSL
               </span>
             </div>
-            <span className="font-sans font-semibold text-[13px] text-slate-400">
-              Dettroin Core Enterprise — Client Dashboard v3.2
-            </span>
+            
+            {/* Windows System Control Buttons on Right */}
+            <div className="flex items-center">
+              <button className="h-10 w-12 flex items-center justify-center hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors cursor-pointer">
+                <Minus className="w-3.5 h-3.5" />
+              </button>
+              <button className="h-10 w-12 flex items-center justify-center hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors cursor-pointer">
+                <Square className="w-3 h-3" />
+              </button>
+              <button className="h-10 w-12 flex items-center justify-center hover:bg-rose-600 hover:text-white text-slate-500 transition-colors cursor-pointer">
+                <X className="w-4 h-4" />
+              </button>
+            </div>
           </div>
 
           {/* Console Inner Core Grid */}
           <div className="grid grid-cols-1 md:grid-cols-12 min-h-[500px]">
             
             {/* Left Control Column Stack */}
-            <div className="md:col-span-3 bg-slate-950 border-r border-slate-800 p-4 space-y-1.5" id="sandbox-sidebar">
-              <p className="font-sans font-bold text-[10px] text-slate-500 tracking-wider uppercase mb-3 px-3">
+            <div className="md:col-span-3 bg-slate-50 border-r border-slate-200 p-4 space-y-1.5" id="sandbox-sidebar">
+              <p className="font-sans font-bold text-[10px] text-slate-400 tracking-wider uppercase mb-3 px-3">
                 ERP Core Panels
               </p>
               
               <button
-                onClick={() => { setActiveTab('students'); setSearchFilter(''); }}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-sans font-semibold text-[13.5px] text-left transition-all relative ${
+                onClick={() => { setActiveTab('analytics'); }}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-sans font-semibold text-[13.5px] text-left transition-all relative cursor-pointer ${
+                  activeTab === 'analytics'
+                    ? 'bg-blue-50 text-blue-600 border-l-4 border-l-blue-600 font-bold'
+                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-800'
+                }`}
+              >
+                <BarChart3 className="w-4 h-4 shrink-0" />
+                <span>Dashboard Analytics</span>
+              </button>
+
+              <button
+                onClick={() => { setActiveTab('students'); }}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-sans font-semibold text-[13.5px] text-left transition-all relative cursor-pointer ${
                   activeTab === 'students'
-                    ? 'bg-blue-500/10 text-blue-400 border-l-4 border-l-blue-500'
-                    : 'text-slate-400 hover:bg-slate-800/50 hover:text-slate-200'
+                    ? 'bg-blue-50 text-blue-600 border-l-4 border-l-blue-600 font-bold'
+                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-800'
                 }`}
               >
                 <Users className="w-4 h-4 shrink-0" />
@@ -246,11 +266,11 @@ export default function ERPWebview() {
               </button>
 
               <button
-                onClick={() => { setActiveTab('fees'); setSearchFilter(''); }}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-sans font-semibold text-[13.5px] text-left transition-all relative ${
+                onClick={() => { setActiveTab('fees'); }}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-sans font-semibold text-[13.5px] text-left transition-all relative cursor-pointer ${
                   activeTab === 'fees'
-                    ? 'bg-blue-500/10 text-blue-400 border-l-4 border-l-blue-500'
-                    : 'text-slate-400 hover:bg-slate-800/50 hover:text-slate-200'
+                    ? 'bg-blue-50 text-blue-600 border-l-4 border-l-blue-600 font-bold'
+                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-800'
                 }`}
               >
                 <CreditCard className="w-4 h-4 shrink-0" />
@@ -258,11 +278,11 @@ export default function ERPWebview() {
               </button>
 
               <button
-                onClick={() => { setActiveTab('gps'); setSearchFilter(''); }}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-sans font-semibold text-[13.5px] text-left transition-all relative ${
+                onClick={() => { setActiveTab('gps'); }}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-sans font-semibold text-[13.5px] text-left transition-all relative cursor-pointer ${
                   activeTab === 'gps'
-                    ? 'bg-blue-500/10 text-blue-400 border-l-4 border-l-blue-500'
-                    : 'text-slate-400 hover:bg-slate-800/50 hover:text-slate-200'
+                    ? 'bg-blue-50 text-blue-600 border-l-4 border-l-blue-600 font-bold'
+                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-800'
                 }`}
               >
                 <Map className="w-4 h-4 shrink-0" />
@@ -270,22 +290,22 @@ export default function ERPWebview() {
               </button>
 
               <button
-                onClick={() => { setActiveTab('broadcaster'); setSearchFilter(''); }}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-sans font-semibold text-[13.5px] text-left transition-all relative ${
+                onClick={() => { setActiveTab('broadcaster'); }}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-sans font-semibold text-[13.5px] text-left transition-all relative cursor-pointer ${
                   activeTab === 'broadcaster'
-                    ? 'bg-blue-500/10 text-blue-400 border-l-4 border-l-blue-500'
-                    : 'text-slate-400 hover:bg-[#1e293b]/50 hover:text-slate-200'
+                    ? 'bg-blue-50 text-blue-600 border-l-4 border-l-blue-600 font-bold'
+                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-800'
                 }`}
               >
                 <Bell className="w-4 h-4 shrink-0" />
                 <span>WhatsApp Notice Board</span>
               </button>
 
-              <div className="pt-6 border-t border-slate-800/80 mt-6 px-3">
-                <p className="font-sans font-bold text-[10px] text-slate-500 tracking-wider uppercase mb-2">
+              <div className="pt-6 border-t border-slate-200 mt-6 px-3">
+                <p className="font-sans font-bold text-[10px] text-slate-400 tracking-wider uppercase mb-2">
                   Interactive Console Logs
                 </p>
-                <div className="bg-slate-950 text-emerald-400/90 font-mono text-[10px] p-3 rounded-lg h-[110px] overflow-y-auto space-y-1.5 leading-relaxed selection:bg-brand-red border border-slate-800/60">
+                <div className="bg-white text-slate-700 font-mono text-[10px] p-3 rounded-lg h-[110px] overflow-y-auto space-y-1.5 leading-relaxed selection:bg-brand-red border border-slate-200 shadow-inner">
                   {logsList.map((log, index) => (
                     <div key={index} className="truncate">{log}</div>
                   ))}
@@ -294,35 +314,275 @@ export default function ERPWebview() {
             </div>
 
             {/* Right Display Console Content */}
-            <div className="md:col-span-9 p-6 sm:p-8 flex flex-col justify-between bg-slate-900" id="sandbox-center-panel">
+            <div className="md:col-span-9 p-6 sm:p-8 flex flex-col justify-between bg-white" id="sandbox-center-panel">
               
-              {/* Dynamic Sub-header or Stats Panel depending on tab */}
               <div className="w-full">
                 
-                {/* 1. Student Directory Roster View */}
+                {/* 1. Dashboard Analytics View (with SVG graphs) */}
+                {activeTab === 'analytics' && (
+                  <div className="space-y-6">
+                    {/* Key Stats Cards Row */}
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                      <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl shadow-sm flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                          <Users className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <span className="font-sans text-[11px] uppercase tracking-wider text-slate-500 font-medium block">Total Roster</span>
+                          <p className="font-display font-black text-xl text-slate-900 mt-0.5">{totalStudents}</p>
+                        </div>
+                      </div>
+                      <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl shadow-sm flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
+                          <CheckCircle className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <span className="font-sans text-[11px] uppercase tracking-wider text-slate-500 font-medium block">Avg Attendance</span>
+                          <p className="font-display font-black text-xl text-emerald-600 mt-0.5">{averageAttendance}%</p>
+                        </div>
+                      </div>
+                      <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl shadow-sm flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600 shrink-0">
+                          <CreditCard className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <span className="font-sans text-[11px] uppercase tracking-wider text-slate-500 font-medium block">Fee Collected</span>
+                          <p className="font-display font-black text-xl text-slate-900 mt-0.5">{collectionsRate}%</p>
+                        </div>
+                      </div>
+                      <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl shadow-sm flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-rose-50 flex items-center justify-center text-rose-600 shrink-0">
+                          <Bus className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <span className="font-sans text-[11px] uppercase tracking-wider text-slate-500 font-medium block">Active Fleet</span>
+                          <p className="font-display font-black text-xl text-slate-900 mt-0.5">3 Routes</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* SVG Graphs Row */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      
+                      {/* Attendance Area Chart */}
+                      <div className="bg-slate-50 border border-slate-200 p-5 rounded-xl shadow-sm">
+                        <div className="flex items-center justify-between mb-4">
+                          <div>
+                            <h5 className="font-display font-bold text-sm text-slate-800">Weekly Attendance Trend</h5>
+                            <p className="font-sans text-xs text-slate-500">Live operational percentage updates</p>
+                          </div>
+                          <span className="bg-blue-50 text-blue-600 border border-blue-100 px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1">
+                            <TrendingUp className="w-3 h-3" /> +1.2%
+                          </span>
+                        </div>
+                        
+                        <div className="w-full">
+                          <svg className="w-full" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid meet">
+                            <defs>
+                              <linearGradient id="attendance-grad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.25" />
+                                <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.0" />
+                              </linearGradient>
+                            </defs>
+                            
+                            {/* Grid Lines */}
+                            <line x1="40" y1="20" x2="380" y2="20" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3,3" />
+                            <line x1="40" y1="70" x2="380" y2="70" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3,3" />
+                            <line x1="40" y1="120" x2="380" y2="120" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3,3" />
+                            <line x1="40" y1="140" x2="380" y2="140" stroke="#cbd5e1" strokeWidth="1.5" />
+                            
+                            {/* Y Axis Labels */}
+                            <text x="12" y="24" className="fill-slate-400 font-mono text-[9px] font-semibold">100%</text>
+                            <text x="17" y="74" className="fill-slate-400 font-mono text-[9px] font-semibold">90%</text>
+                            <text x="17" y="124" className="fill-slate-400 font-mono text-[9px] font-semibold">80%</text>
+
+                            {/* X Axis Labels */}
+                            <text x="40" y="154" textAnchor="middle" className="fill-slate-500 font-sans text-[10px] font-bold">Mon</text>
+                            <text x="120" y="154" textAnchor="middle" className="fill-slate-500 font-sans text-[10px] font-bold">Tue</text>
+                            <text x="200" y="154" textAnchor="middle" className="fill-slate-500 font-sans text-[10px] font-bold">Wed</text>
+                            <text x="280" y="154" textAnchor="middle" className="fill-slate-500 font-sans text-[10px] font-bold">Thu</text>
+                            <text x="360" y="154" textAnchor="middle" className="fill-slate-500 font-sans text-[10px] font-bold">Fri</text>
+
+                            {/* Area Path */}
+                            <path 
+                              d="M 40 60 L 120 45 L 200 70 L 280 30 L 360 40 L 360 140 L 40 140 Z" 
+                              fill="url(#attendance-grad)" 
+                            />
+                            
+                            {/* Line Path */}
+                            <path 
+                              d="M 40 60 L 120 45 L 200 70 L 280 30 L 360 40" 
+                              fill="none" 
+                              stroke="#3b82f6" 
+                              strokeWidth="2.5" 
+                              strokeLinecap="round" 
+                              strokeLinejoin="round" 
+                            />
+
+                            {/* Data Dots */}
+                            <circle cx="40" cy="60" r="4" fill="#ffffff" stroke="#3b82f6" strokeWidth="2.5" />
+                            <circle cx="120" cy="45" r="4" fill="#ffffff" stroke="#3b82f6" strokeWidth="2.5" />
+                            <circle cx="200" cy="70" r="4" fill="#ffffff" stroke="#3b82f6" strokeWidth="2.5" />
+                            <circle cx="280" cy="30" r="4" fill="#ffffff" stroke="#3b82f6" strokeWidth="2.5" />
+                            <circle cx="360" cy="40" r="4" fill="#ffffff" stroke="#3b82f6" strokeWidth="2.5" />
+
+                            {/* Dot values */}
+                            <text x="40" y="48" textAnchor="middle" className="fill-blue-700 font-mono text-[9px] font-bold">92%</text>
+                            <text x="120" y="33" textAnchor="middle" className="fill-blue-700 font-mono text-[9px] font-bold">95%</text>
+                            <text x="200" y="58" textAnchor="middle" className="fill-blue-700 font-mono text-[9px] font-bold">90%</text>
+                            <text x="280" y="18" textAnchor="middle" className="fill-blue-700 font-mono text-[9px] font-bold">98%</text>
+                            <text x="360" y="28" textAnchor="middle" className="fill-blue-700 font-mono text-[9px] font-bold">96%</text>
+                          </svg>
+                        </div>
+                      </div>
+
+                      {/* Fees Bar Chart */}
+                      <div className="bg-slate-50 border border-slate-200 p-5 rounded-xl shadow-sm">
+                        <div className="flex items-center justify-between mb-4">
+                          <div>
+                            <h5 className="font-display font-bold text-sm text-slate-800">Dues Recovery Tracker</h5>
+                            <p className="font-sans text-xs text-slate-500">Collected vs Pending invoices</p>
+                          </div>
+                          <div className="flex items-center gap-3 text-[10px] font-bold">
+                            <span className="flex items-center gap-1 text-slate-650">
+                              <span className="w-2.5 h-2.5 bg-emerald-500 rounded-sm" /> Collected
+                            </span>
+                            <span className="flex items-center gap-1 text-slate-650">
+                              <span className="w-2.5 h-2.5 bg-rose-400 rounded-sm" /> Pending
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="w-full">
+                          <svg className="w-full" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid meet">
+                            {/* Grid Lines */}
+                            <line x1="45" y1="20" x2="380" y2="20" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3,3" />
+                            <line x1="45" y1="75" x2="380" y2="75" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3,3" />
+                            <line x1="45" y1="130" x2="380" y2="130" stroke="#cbd5e1" strokeWidth="1.5" />
+
+                            {/* Y Axis Labels */}
+                            <text x="10" y="24" className="fill-slate-400 font-mono text-[9px] font-semibold">₹150k</text>
+                            <text x="15" y="79" className="fill-slate-400 font-mono text-[9px] font-semibold">₹75k</text>
+                            <text x="25" y="134" className="fill-slate-400 font-mono text-[9px] font-semibold">0</text>
+
+                            {/* X Axis Labels */}
+                            <text x="100" y="146" textAnchor="middle" className="fill-slate-500 font-sans text-[10px] font-bold">April</text>
+                            <text x="210" y="146" textAnchor="middle" className="fill-slate-500 font-sans text-[10px] font-bold">May</text>
+                            <text x="320" y="146" textAnchor="middle" className="fill-slate-500 font-sans text-[10px] font-bold">June</text>
+
+                            {/* April Bars */}
+                            <rect x="80" y="75" width="16" height="55" rx="3" fill="#10b981" />
+                            <text x="88" y="70" textAnchor="middle" className="fill-slate-650 font-mono text-[8.5px] font-bold">₹80k</text>
+                            <rect x="102" y="116" width="16" height="14" rx="3" fill="#fb7185" />
+                            <text x="110" y="111" textAnchor="middle" className="fill-slate-650 font-mono text-[8.5px] font-bold">₹20k</text>
+
+                            {/* May Bars */}
+                            <rect x="190" y="48" width="16" height="82" rx="3" fill="#10b981" />
+                            <text x="198" y="43" textAnchor="middle" className="fill-slate-650 font-mono text-[8.5px] font-bold">₹120k</text>
+                            <rect x="212" y="123" width="16" height="7" rx="3" fill="#fb7185" />
+                            <text x="220" y="118" textAnchor="middle" className="fill-slate-650 font-mono text-[8.5px] font-bold">₹10k</text>
+
+                            {/* June Bars */}
+                            <rect x="300" y="65" width="16" height="65" rx="3" fill="#10b981" />
+                            <text x="308" y="60" textAnchor="middle" className="fill-slate-650 font-mono text-[8.5px] font-bold">₹95k</text>
+                            <rect x="322" y="103" width="16" height="27" rx="3" fill="#fb7185" />
+                            <text x="330" y="98" textAnchor="middle" className="fill-slate-650 font-mono text-[8.5px] font-bold">₹40k</text>
+                          </svg>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    {/* Bottom Telemetry and Broadcast Summary Row */}
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                      
+                      {/* Donut Fleet status */}
+                      <div className="bg-slate-50 border border-slate-200 p-5 rounded-xl shadow-sm lg:col-span-1 flex flex-col justify-between">
+                        <div>
+                          <h5 className="font-display font-bold text-sm text-slate-800 mb-2">Fleet Telemetry Status</h5>
+                          <p className="font-sans text-xs text-slate-500 mb-4">Real-time school bus connection rates</p>
+                        </div>
+                        
+                        <div className="flex items-center justify-center py-2">
+                          <div className="relative w-[110px] h-[110px]">
+                            <svg width="110" height="110" viewBox="0 0 110 110" className="transform -rotate-90">
+                              <circle cx="55" cy="55" r="40" fill="transparent" stroke="#e2e8f0" strokeWidth="12" />
+                              <circle cx="55" cy="55" r="40" fill="transparent" stroke="#10b981" strokeWidth="12" strokeDasharray="188.5 251.3" strokeDashoffset="0" strokeLinecap="round" />
+                              <circle cx="55" cy="55" r="40" fill="transparent" stroke="#f43f5e" strokeWidth="12" strokeDasharray="62.8 251.3" strokeDashoffset="-188.5" strokeLinecap="round" />
+                            </svg>
+                            <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                              <span className="font-display font-black text-lg text-slate-800 leading-none">4</span>
+                              <span className="font-sans text-[9px] uppercase tracking-wider text-slate-500 font-bold mt-0.5">Buses</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex justify-around text-[10.5px] font-bold mt-3">
+                          <span className="flex items-center gap-1.5 text-slate-700">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500" /> Active (3)
+                          </span>
+                          <span className="flex items-center gap-1.5 text-slate-700">
+                            <span className="w-2 h-2 rounded-full bg-rose-500" /> Delayed (1)
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Broadcast Feed Overview */}
+                      <div className="bg-slate-50 border border-slate-200 p-5 rounded-xl shadow-sm lg:col-span-2 space-y-3">
+                        <h5 className="font-display font-bold text-sm text-slate-800">Recent Broadcast Announcements</h5>
+                        <div className="space-y-3">
+                          {recentBroadcasts.slice(0, 2).map((bc, idx) => (
+                            <div key={idx} className="bg-white border border-slate-200 p-3 rounded-lg flex justify-between items-start gap-3 shadow-sm">
+                              <div className="space-y-1">
+                                <div className="flex items-center gap-2">
+                                  <span className="bg-emerald-50 text-emerald-600 border border-emerald-100 px-2 py-0.5 rounded-full font-mono text-[9px] font-bold">
+                                    {bc.type}
+                                  </span>
+                                  <span className="text-[10px] font-sans text-slate-400 font-medium">{bc.time}</span>
+                                </div>
+                                <p className="font-sans text-[11px] text-slate-600 italic leading-relaxed">
+                                  "{bc.text}"
+                                </p>
+                                <div className="text-[9.5px] font-sans font-semibold text-slate-500">
+                                  Target: <span className="text-blue-600 font-bold">{bc.target}</span>
+                                </div>
+                              </div>
+                              <span className="text-emerald-550 text-[10px] font-bold flex items-center gap-1 mt-0.5 select-none shrink-0">
+                                <CheckSquare className="w-3.5 h-3.5" /> Dispatched
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                )}
+
+                {/* 2. Student Directory Roster View */}
                 {activeTab === 'students' && (
                   <div className="space-y-6">
                     {/* Interactive Stat Cards Row */}
                     <div className="grid grid-cols-3 gap-4">
-                      <div className="bg-slate-950 border border-slate-850 p-4 rounded-xl">
-                        <span className="font-sans text-[11px] uppercase tracking-wider text-slate-400 font-medium">Total Roster</span>
-                        <p className="font-display font-black text-2xl text-white mt-1">{totalStudents}</p>
+                      <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl shadow-sm">
+                        <span className="font-sans text-[11px] uppercase tracking-wider text-slate-500 font-medium">Total Roster</span>
+                        <p className="font-display font-black text-2xl text-slate-900 mt-1">{totalStudents}</p>
                       </div>
-                      <div className="bg-slate-950 border border-slate-850 p-4 rounded-xl">
-                        <span className="font-sans text-[11px] uppercase tracking-wider text-slate-400 font-medium">Absentees Checked</span>
-                        <p className="font-display font-black text-2xl text-rose-400 mt-1">{absenteesCount}</p>
+                      <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl shadow-sm">
+                        <span className="font-sans text-[11px] uppercase tracking-wider text-slate-500 font-medium">Absentees Checked</span>
+                        <p className="font-display font-black text-2xl text-rose-600 mt-1">{absenteesCount}</p>
                       </div>
-                      <div className="bg-slate-950 border border-slate-850 p-4 rounded-xl">
-                        <span className="font-sans text-[11px] uppercase tracking-wider text-slate-400 font-medium">Avg Attendance Rate</span>
-                        <p className="font-display font-black text-2xl text-emerald-400 mt-1">{averageAttendance}%</p>
+                      <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl shadow-sm">
+                        <span className="font-sans text-[11px] uppercase tracking-wider text-slate-500 font-medium">Avg Attendance Rate</span>
+                        <p className="font-display font-black text-2xl text-emerald-600 mt-1">{averageAttendance}%</p>
                       </div>
                     </div>
 
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
-                      <h4 className="font-display font-bold text-lg text-white">Active Enrolled Students</h4>
+                      <h4 className="font-display font-bold text-lg text-slate-900">Active Enrolled Students</h4>
                       <button
                         onClick={handleAddStudent}
-                        className="flex items-center gap-1.5 bg-brand-red text-white py-1.5 px-3.5 rounded-lg font-sans font-bold text-[12px] hover:bg-brand-red-hover active:scale-95 transition-all self-start sm:self-auto"
+                        className="flex items-center gap-1.5 bg-brand-red text-white py-1.5 px-3.5 rounded-lg font-sans font-bold text-[12px] hover:bg-brand-red-hover active:scale-95 transition-all self-start sm:self-auto cursor-pointer"
                       >
                         <Plus className="w-3.5 h-3.5" />
                         Quick Admission Enroll
@@ -330,10 +590,10 @@ export default function ERPWebview() {
                     </div>
 
                     {/* Table */}
-                    <div className="overflow-x-auto border border-slate-800 rounded-xl">
+                    <div className="overflow-x-auto border border-slate-200 rounded-xl bg-white">
                       <table className="w-full text-left font-sans text-xs select-none">
                         <thead>
-                          <tr className="bg-slate-950 text-slate-400 font-medium uppercase border-b border-slate-800">
+                          <tr className="bg-slate-50 text-slate-500 font-medium uppercase border-b border-slate-200">
                             <th className="p-3">Admit ID</th>
                             <th className="p-3">Student Name</th>
                             <th className="p-3">Grade Class</th>
@@ -342,28 +602,28 @@ export default function ERPWebview() {
                             <th className="p-3 text-center">Action</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-slate-800/60">
+                        <tbody className="divide-y divide-slate-100">
                           {studentsList.map((st) => (
-                            <tr key={st.id} className="hover:bg-slate-800 transition-colors">
-                              <td className="p-3 font-mono text-slate-400 font-bold">{st.id}</td>
-                              <td className="p-3 text-white font-bold">{st.name}</td>
-                              <td className="p-3 text-slate-300 font-medium">{st.grade}</td>
+                            <tr key={st.id} className="hover:bg-slate-50 transition-colors">
+                              <td className="p-3 font-mono text-slate-500 font-bold">{st.id}</td>
+                              <td className="p-3 text-slate-900 font-bold">{st.name}</td>
+                              <td className="p-3 text-slate-600 font-medium">{st.grade}</td>
                               <td className="p-3">
                                 <div className="flex items-center gap-2">
-                                  <div className="w-12 bg-slate-850 h-1.5 rounded-full overflow-hidden">
+                                  <div className="w-12 bg-slate-100 h-1.5 rounded-full overflow-hidden">
                                     <div 
                                       className={`h-full rounded-full ${st.attendance >= 90 ? 'bg-emerald-500' : st.attendance >= 80 ? 'bg-amber-500' : 'bg-brand-red'}`}
                                       style={{ width: `${st.attendance}%` }}
                                     />
                                   </div>
-                                  <span className="font-bold text-slate-300">{st.attendance}%</span>
+                                  <span className="font-bold text-slate-700">{st.attendance}%</span>
                                 </div>
                               </td>
                               <td className="p-3">
-                                <span className={`px-2 py-1 rounded-full text-[10px] font-bold ${
+                                <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
                                   st.status === 'Present' 
-                                    ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/10' 
-                                    : 'bg-rose-500/15 text-rose-400 border border-rose-500/10'
+                                    ? 'bg-emerald-50 text-emerald-600 border border-emerald-200' 
+                                    : 'bg-rose-50 text-rose-600 border border-rose-200'
                                 }`}>
                                   {st.status}
                                 </span>
@@ -371,7 +631,7 @@ export default function ERPWebview() {
                               <td className="p-3 text-center">
                                 <button
                                   onClick={() => toggleStudentStatus(st.id)}
-                                  className="border border-slate-700 text-slate-300 hover:border-brand-red py-1 px-2.5 rounded hover:bg-brand-red hover:text-white transition-all font-semibold text-[10px]"
+                                  className="border border-slate-200 text-slate-650 hover:border-brand-red py-1 px-2.5 rounded hover:bg-brand-red hover:text-white transition-all font-semibold text-[10px] cursor-pointer"
                                 >
                                   Toggle Presentee
                                 </button>
@@ -384,35 +644,35 @@ export default function ERPWebview() {
                   </div>
                 )}
 
-                {/* 2. Fees Ledger View */}
+                {/* 3. Fees Ledger View */}
                 {activeTab === 'fees' && (
                   <div className="space-y-6">
                     {/* Interactive Stat Cards Row */}
                     <div className="grid grid-cols-3 gap-4">
-                      <div className="bg-slate-950 border border-slate-850 p-4 rounded-xl">
-                        <span className="font-sans text-[11px] uppercase tracking-wider text-slate-400 font-medium">Total Invoiced</span>
-                        <p className="font-display font-black text-2xl text-white mt-1">₹{totalInvoiced.toLocaleString()}</p>
+                      <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl shadow-sm">
+                        <span className="font-sans text-[11px] uppercase tracking-wider text-slate-500 font-medium">Total Invoiced</span>
+                        <p className="font-display font-black text-2xl text-slate-900 mt-1">₹{totalInvoiced.toLocaleString()}</p>
                       </div>
-                      <div className="bg-slate-950 border border-slate-850 p-4 rounded-xl">
-                        <span className="font-sans text-[11px] uppercase tracking-wider text-slate-400 font-medium">Collected Online</span>
-                        <p className="font-display font-black text-2xl text-emerald-400 mt-1">₹{collectedInvoiced.toLocaleString()}</p>
+                      <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl shadow-sm">
+                        <span className="font-sans text-[11px] uppercase tracking-wider text-slate-500 font-medium">Collected Online</span>
+                        <p className="font-display font-black text-2xl text-emerald-600 mt-1">₹{collectedInvoiced.toLocaleString()}</p>
                       </div>
-                      <div className="bg-slate-950 border border-slate-850 p-4 rounded-xl">
-                        <span className="font-sans text-[11px] uppercase tracking-wider text-slate-400 font-medium">Collection Progress</span>
-                        <p className="font-display font-black text-2xl text-amber-400 mt-1">{collectionsRate}%</p>
+                      <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl shadow-sm">
+                        <span className="font-sans text-[11px] uppercase tracking-wider text-slate-500 font-medium">Collection Progress</span>
+                        <p className="font-display font-black text-2xl text-amber-600 mt-1">{collectionsRate}%</p>
                       </div>
                     </div>
 
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
-                      <h4 className="font-display font-bold text-lg text-white">Pending & Settled Invoices</h4>
-                      <p className="font-sans text-[11.5px] text-slate-400 font-medium">Click "Approve" to simulate a real-time parent mobile payout</p>
+                      <h4 className="font-display font-bold text-lg text-slate-900">Pending & Settled Invoices</h4>
+                      <p className="font-sans text-[11.5px] text-slate-500 font-medium">Click "Approve" to simulate a real-time parent mobile payout</p>
                     </div>
 
                     {/* Table */}
-                    <div className="overflow-x-auto border border-slate-800 rounded-xl">
+                    <div className="overflow-x-auto border border-slate-200 rounded-xl bg-white">
                       <table className="w-full text-left font-sans text-xs select-none">
                         <thead>
-                          <tr className="bg-slate-950 text-slate-400 font-medium uppercase border-b border-slate-800">
+                          <tr className="bg-slate-50 text-slate-500 font-medium uppercase border-b border-slate-200">
                             <th className="p-3">Invoice ID</th>
                             <th className="p-3">Student Name</th>
                             <th className="p-3">Amount Due</th>
@@ -422,19 +682,19 @@ export default function ERPWebview() {
                             <th className="p-3 text-center">Action</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-slate-800/60">
+                        <tbody className="divide-y divide-slate-100">
                           {feesList.map((f) => (
-                            <tr key={f.id} className="hover:bg-slate-800 transition-colors">
-                              <td className="p-3 font-mono text-slate-400 font-bold">{f.invoiceId}</td>
-                              <td className="p-3 text-white font-bold">{f.student}</td>
-                              <td className="p-3 font-semibold text-slate-100">₹{f.amount.toLocaleString()}</td>
-                              <td className="p-3 text-slate-350 font-medium">{f.dueDate}</td>
-                              <td className="p-3 text-slate-400 font-mono font-medium">{f.method}</td>
+                            <tr key={f.id} className="hover:bg-slate-50 transition-colors">
+                              <td className="p-3 font-mono text-slate-500 font-bold">{f.invoiceId}</td>
+                              <td className="p-3 text-slate-900 font-bold">{f.student}</td>
+                              <td className="p-3 font-semibold text-slate-800">₹{f.amount.toLocaleString()}</td>
+                              <td className="p-3 text-slate-500 font-medium">{f.dueDate}</td>
+                              <td className="p-3 text-slate-500 font-mono font-medium">{f.method}</td>
                               <td className="p-3">
-                                <span className={`px-2 py-1 rounded-full text-[10px] font-bold ${
+                                <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
                                   f.status === 'Paid' 
-                                    ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/10' 
-                                    : 'bg-rose-500/15 text-rose-400 border border-rose-500/10'
+                                    ? 'bg-emerald-50 text-emerald-600 border border-emerald-200' 
+                                    : 'bg-rose-50 text-rose-600 border border-rose-200'
                                 }`}>
                                   {f.status}
                                 </span>
@@ -443,12 +703,12 @@ export default function ERPWebview() {
                                 {f.status === 'Pending' ? (
                                   <button
                                     onClick={() => approveFeePayment(f.id)}
-                                    className="bg-emerald-500 text-white hover:bg-[#16a34a] py-1 px-3 rounded font-bold text-[10px] active:scale-95 transition-all shadow-md shadow-emerald-500/10"
+                                    className="bg-emerald-650 text-white hover:bg-emerald-700 py-1 px-3 rounded font-bold text-[10px] active:scale-95 transition-all shadow-md shadow-emerald-500/10 cursor-pointer"
                                   >
                                     Approve Pay
                                   </button>
                                 ) : (
-                                  <span className="text-emerald-400 font-bold text-[10.5px]">Receipt Emailed</span>
+                                  <span className="text-emerald-600 font-bold text-[10.5px]">Receipt Emailed</span>
                                 )}
                               </td>
                             </tr>
@@ -459,34 +719,34 @@ export default function ERPWebview() {
                   </div>
                 )}
 
-                {/* 3. GPS Bus Monitoring */}
+                {/* 4. GPS Bus Monitoring */}
                 {activeTab === 'gps' && (
                   <div className="space-y-6">
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-slate-950 border border-slate-850 p-4 rounded-xl flex items-center gap-3">
+                      <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl flex items-center gap-3 shadow-sm">
                         <div className="w-10 h-10 rounded-lg bg-brand-red/10 flex items-center justify-center text-brand-red">
                           <Bus className="w-5 h-5" />
                         </div>
                         <div>
-                          <span className="font-sans text-[11px] uppercase tracking-wider text-slate-400 font-medium block">Total Fleet Active</span>
-                          <p className="font-display font-black text-xl text-white mt-0.5">3 Active Buses</p>
+                          <span className="font-sans text-[11px] uppercase tracking-wider text-slate-500 font-medium block">Total Fleet Active</span>
+                          <p className="font-display font-black text-xl text-slate-900 mt-0.5">3 Active Buses</p>
                         </div>
                       </div>
-                      <div className="bg-slate-950 border border-slate-850 p-4 rounded-xl flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">
+                      <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl flex items-center gap-3 shadow-sm">
+                        <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center text-amber-500">
                           <MapPin className="w-5 h-5" />
                         </div>
                         <div>
-                          <span className="font-sans text-[11px] uppercase tracking-wider text-slate-400 font-medium block">Verified Live Waypoints</span>
-                          <p className="font-display font-black text-xl text-amber-400 mt-0.5">24 Scanned Gates</p>
+                          <span className="font-sans text-[11px] uppercase tracking-wider text-slate-500 font-medium block">Verified Live Waypoints</span>
+                          <p className="font-display font-black text-xl text-amber-600 mt-0.5">24 Scanned Gates</p>
                         </div>
                       </div>
                     </div>
 
                     <div className="flex items-center justify-between pt-2">
-                      <h4 className="font-display font-bold text-lg text-white">School Bus GPS Tracking Feed</h4>
-                      <span className="inline-flex items-center gap-1 bg-emerald-500/15 border border-emerald-500/25 text-emerald-450 px-2 py-0.5 rounded-full text-[10px] font-bold">
-                        <span className="w-1.5 h-1.5 bg-[#28c840] rounded-full animate-pulse" /> Live Telemetry Feed
+                      <h4 className="font-display font-bold text-lg text-slate-900">School Bus GPS Tracking Feed</h4>
+                      <span className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 px-2 py-0.5 rounded-full text-[10px] font-bold">
+                        <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" /> Live Telemetry Feed
                       </span>
                     </div>
 
@@ -494,14 +754,14 @@ export default function ERPWebview() {
                       {buses.map((bus) => (
                         <div 
                           key={bus.id} 
-                          className="bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all hover:bg-slate-800"
+                          className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all hover:bg-slate-100/50"
                         >
                           <div className="flex items-start gap-3">
-                            <span className="font-bold text-slate-300 font-mono text-[11px] bg-slate-800 px-2 py-0.5 rounded mt-0.5 shrink-0 block">{bus.id}</span>
+                            <span className="font-bold text-slate-650 font-mono text-[11px] bg-slate-200 px-2 py-0.5 rounded mt-0.5 shrink-0 block">{bus.id}</span>
                             <div>
-                              <p className="font-display font-bold text-white text-[14px] leading-tight">{bus.routeNo}</p>
-                              <div className="flex flex-wrap gap-x-3 gap-y-1 mt-1 text-[11.5px] font-sans text-slate-400 font-medium">
-                                <span className="text-slate-300">Operator: <strong className="font-semibold">{bus.driverName}</strong></span>
+                              <p className="font-display font-bold text-slate-800 text-[14px] leading-tight">{bus.routeNo}</p>
+                              <div className="flex flex-wrap gap-x-3 gap-y-1 mt-1 text-[11.5px] font-sans text-slate-500 font-medium">
+                                <span className="text-slate-650">Operator: <strong className="font-semibold">{bus.driverName}</strong></span>
                                 <span>•</span>
                                 <span>Recent Mark: <strong className="text-brand-red font-semibold">{bus.currentStop}</strong></span>
                               </div>
@@ -510,20 +770,20 @@ export default function ERPWebview() {
 
                           <div className="flex items-center gap-6 self-end sm:self-auto shrink-0">
                             <div className="text-right">
-                              <p className="font-sans text-[11.5px] text-slate-400 leading-none">Status</p>
+                              <p className="font-sans text-[11.5px] text-slate-500 leading-none">Status</p>
                               <span className={`inline-block font-sans font-bold text-[11px] mt-1.5 ${
-                                bus.status === 'Active' ? 'text-emerald-400' : 'text-rose-450'
+                                bus.status === 'Active' ? 'text-emerald-600' : 'text-rose-650'
                               }`}>
                                 {bus.status === 'Active' ? 'MOVING' : 'DELAYED 12M'}
                               </span>
                             </div>
                             <div className="text-right">
-                              <p className="font-sans text-[11.5px] text-slate-400 leading-none">Boarding Roll</p>
-                              <p className="font-display font-black text-white text-sm mt-1">{bus.totalStudents} Students</p>
+                              <p className="font-sans text-[11.5px] text-slate-500 leading-none">Boarding Roll</p>
+                              <p className="font-display font-black text-slate-800 text-sm mt-1">{bus.totalStudents} Students</p>
                             </div>
                             <div className="text-right w-16">
-                              <p className="font-sans text-[11.5px] text-slate-400 leading-none">Speed</p>
-                              <p className="font-mono font-bold text-[13px] text-slate-300 mt-1">{bus.speed} km/h</p>
+                              <p className="font-sans text-[11.5px] text-slate-500 leading-none">Speed</p>
+                              <p className="font-mono font-bold text-[13px] text-slate-650 mt-1">{bus.speed} km/h</p>
                             </div>
                             <button
                               onClick={() => {
@@ -532,7 +792,7 @@ export default function ERPWebview() {
                                 );
                                 addLog(`Requested instant route telemetry update for ${bus.id}.`);
                               }}
-                              className="bg-slate-800 p-2 rounded-lg hover:bg-brand-red hover:text-white transition-colors text-slate-400 focus:outline-none cursor-pointer"
+                              className="bg-slate-200 p-2 rounded-lg hover:bg-brand-red hover:text-white transition-colors text-slate-600 focus:outline-none cursor-pointer"
                               title="Force Route Ping"
                             >
                               <Map className="w-4 h-4 text-current" />
@@ -544,24 +804,24 @@ export default function ERPWebview() {
                   </div>
                 )}
 
-                {/* 4. Notice circular broadcasting View */}
+                {/* 5. Notice circular broadcasting View */}
                 {activeTab === 'broadcaster' && (
                   <div className="space-y-6">
-                    <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-                      <h4 className="font-display font-bold text-lg text-white font-semibold">WhatsApp Circular Broadcast Console</h4>
+                    <div className="flex items-center justify-between pb-2 border-b border-slate-250">
+                      <h4 className="font-display font-bold text-lg text-slate-900 font-semibold">WhatsApp Circular Broadcast Console</h4>
                       <p className="font-sans text-[11px] text-slate-400 font-semibold uppercase tracking-wider">SMS / WA Channel Active</p>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                       
-                      {/* Left: Input Form form */}
-                      <form onSubmit={handleBroadcastSubmit} className="lg:col-span-7 bg-slate-950 border border-slate-800 p-5 rounded-xl space-y-4">
+                      {/* Left: Input Form */}
+                      <form onSubmit={handleBroadcastSubmit} className="lg:col-span-7 bg-slate-50 border border-slate-200 p-5 rounded-xl space-y-4">
                         <div id="form-inp-target">
-                          <label className="font-sans font-bold text-[11px] text-slate-400 uppercase tracking-wider block mb-1.5">Target Core Parameters</label>
+                          <label className="font-sans font-bold text-[11px] text-slate-500 uppercase tracking-wider block mb-1.5">Target Core Parameters</label>
                           <select 
                             value={broadcastTarget}
                             onChange={(e) => setBroadcastTarget(e.target.value)}
-                            className="bg-slate-950 border border-slate-700 text-slate-200 rounded-lg p-2.5 w-full font-sans text-xs focus:ring focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
+                            className="bg-white border border-slate-300 text-slate-800 rounded-lg p-2.5 w-full font-sans text-xs focus:ring focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
                           >
                             <option value="All Parents">All Parents & Guardians (500+ contacts)</option>
                             <option value="Grade 10 & 12 Boards">Board Examinees Students Parents (120+ contacts)</option>
@@ -571,13 +831,13 @@ export default function ERPWebview() {
                         </div>
 
                         <div id="form-inp-text">
-                          <label className="font-sans font-bold text-[11px] text-slate-400 uppercase tracking-wider block mb-1.5">Circular Content Notice Message (WhatsApp Template Format)</label>
+                          <label className="font-sans font-bold text-[11px] text-slate-500 uppercase tracking-wider block mb-1.5">Circular Content Notice Message (WhatsApp Template Format)</label>
                           <textarea
                             rows={4}
                             value={broadcastText}
                             onChange={(e) => setBroadcastText(e.target.value)}
                             placeholder="Enter announcement text to dispatch..."
-                            className="bg-slate-950 border border-slate-700 text-slate-200 rounded-lg p-3 w-full font-sans text-xs leading-relaxed focus:ring focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
+                            className="bg-white border border-slate-300 text-slate-800 rounded-lg p-3 w-full font-sans text-xs leading-relaxed focus:ring focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none"
                             required
                           />
                         </div>
@@ -596,18 +856,18 @@ export default function ERPWebview() {
                         <p className="font-sans font-bold text-[11px] text-slate-400 tracking-wider uppercase">Recent Dispatch Logs (Live Status)</p>
                         <div className="space-y-3 h-[240px] overflow-y-auto pr-1">
                           {recentBroadcasts.map((bc, idx) => (
-                            <div key={idx} className="bg-slate-950 border border-slate-800 p-3.5 rounded-lg shadow-sm space-y-2">
+                            <div key={idx} className="bg-slate-50 border border-slate-200 p-3.5 rounded-lg shadow-sm space-y-2">
                               <div className="flex items-center justify-between">
-                                <span className="bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-mono text-[9px] font-bold">
+                                <span className="bg-emerald-50 text-emerald-600 border border-emerald-250 px-2 py-0.5 rounded-full font-mono text-[9px] font-bold">
                                   {bc.type}
                                 </span>
                                 <span className="text-slate-400 font-sans text-[10px] font-medium">{bc.time}</span>
                               </div>
-                              <p className="font-sans text-[11px] text-slate-200 leading-relaxed italic">
+                              <p className="font-sans text-[11px] text-slate-700 leading-relaxed italic">
                                 "{bc.text}"
                               </p>
-                              <div className="text-[10px] font-sans font-medium text-slate-400">
-                                Target: <span className="text-blue-400 font-bold">{bc.target}</span> • Delivery Rate: <span className="text-emerald-400 font-bold">100% Success</span>
+                              <div className="text-[10px] font-sans font-medium text-slate-500">
+                                Target: <span className="text-blue-600 font-bold">{bc.target}</span> • Delivery Rate: <span className="text-emerald-600 font-bold">100% Success</span>
                               </div>
                             </div>
                           ))}

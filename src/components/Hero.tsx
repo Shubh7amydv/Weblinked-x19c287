@@ -4,6 +4,7 @@ import { Play, GraduationCap, Users, Star, FileText } from 'lucide-react';
 interface SchoolLogoProps {
   name: string;
   src: string;
+  key?: string;
 }
 
 function SchoolLogo({ name, src }: SchoolLogoProps) {
