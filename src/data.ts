@@ -164,7 +164,7 @@ export const WHY_CHOOSE_US_ROWS = [
       'Import student profiles, parents directories, and billing templates in under 30 minutes.',
       'Complimentary initial training sessions provided for teachers, clerks, and administrators.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=700',
+    imageUrl: '/why-dettroin-1.jpg',
     alt: 'Modern workspace demonstrating school digital setup and migration'
   },
   {
@@ -178,7 +178,7 @@ export const WHY_CHOOSE_US_ROWS = [
       'ISO 27001 certified data practices keeping parents and student profiles safe.',
       'Bank-grade AES-256 encryption at rest and secure SSL connections in transit.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=700',
+    imageUrl: '/why-dettroin-2.jpg',
     alt: 'High tech server room representing school database uptime SLA and security'
   },
   {
@@ -192,7 +192,7 @@ export const WHY_CHOOSE_US_ROWS = [
       'Automated dispatch logs for parent notification cards and WhatsApp notifications.',
       'Dynamic real-time dashboards mapping billing recovery, schedules, and alerts.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1521791136368-1a851900d14b?w=700',
+    imageUrl: '/why-dettroin-3.jpg',
     alt: 'Customer support specialist working on school queries at desk'
   }
 ];

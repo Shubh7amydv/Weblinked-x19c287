@@ -11,18 +11,33 @@ export default function DettroinLogo({
   showTagline = true, 
   theme = 'light' 
 }: DettroinLogoProps) {
-  // Brand color selection based on layout theme
-  const textColor = theme === 'dark' ? 'text-white' : 'text-gray-950 pb-0.5';
   const taglineColor = theme === 'dark' ? 'text-gray-400' : 'text-gray-500';
-  const dotColor = 'text-[#566c37]'; // Olive green color accent
+  
+  // In the dark theme: invert color, rotate hue, screen blend (transparent bg), and boost green dot.
+  // In the light theme: apply SVG morphology (erode) filter to thicken black text, and boost green dot.
+  const logoStyle = theme === 'dark' 
+    ? 'invert hue-rotate-180 mix-blend-screen saturate-[2.5] brightness-[1.35]' 
+    : '[filter:url(#bold-logo-filter)_saturate(2.5)_brightness(1.35)]';
 
   return (
     <div className={`flex flex-col items-start select-none ${className}`} id="dettroin-logo-brand">
-      {/* Brand logo wordmark */}
+      {/* Hidden SVG Filter to thicken black text in navbar */}
+      {theme === 'light' && (
+        <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
+          <filter id="bold-logo-filter">
+            <feMorphology operator="erode" radius="0.22" />
+          </filter>
+        </svg>
+      )}
+
+      {/* Brand logo wordmark image */}
       <div className="flex items-center leading-none">
-        <span className={`font-display font-extrabold text-[23px] sm:text-[26px] leading-none tracking-tight ${textColor}`}>
-          Dettroin<span className={dotColor}>.</span>
-        </span>
+        <img 
+          src="/logo.png" 
+          alt="Dettroin Logo" 
+          className={`h-7 sm:h-8 object-contain ${logoStyle}`}
+          referrerPolicy="no-referrer"
+        />
       </div>
       {/* Brand tagline aligned underneath */}
       {showTagline && (

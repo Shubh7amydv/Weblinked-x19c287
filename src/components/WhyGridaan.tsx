@@ -20,9 +20,9 @@ export default function WhyGridaan({
           ======================================================== */}
       {showPartA && (
         <section 
-          className="relative py-20 lg:py-24 px-6 lg:px-[56px] text-white overflow-hidden"
+          className="relative py-8 lg:py-10 px-6 lg:px-[56px] text-white overflow-hidden"
           style={{
-            background: 'linear-gradient(135deg, #D90707 0%, #9E0505 100%)'
+            background: 'linear-gradient(135deg, #0031AD 0%, #00227a 100%)'
           }}
         >
           {/* Subtle dot overlay pattern */}
@@ -41,9 +41,9 @@ export default function WhyGridaan({
               <span className="font-sans font-bold text-[11px] tracking-[2.5px] uppercase text-white/80">
                 CRAFTING INDIAN SYSTEM INTELLIGENCE
               </span>
-              <h2 className="font-display font-bold text-[38px] sm:text-[48px] text-white leading-[1.18] tracking-[-0.4px] select-none">
+              <h1 className="font-display font-bold text-[38px] sm:text-[48px] text-white leading-[1.18] tracking-[-0.4px] select-none">
                 Over a Decade of Empowering <span className="font-black italic text-white/90">Indian</span> Educational Progress
-              </h2>
+              </h1>
               <p className="font-sans font-normal text-[15px] sm:text-[16.5px] leading-relaxed text-white/80 max-w-2xl">
                 Founded under Ahmedabad trust regulations, Dettroin set out with a simple goal: replacing manual record-keeping stacks with secure, simple digital interfaces. Today, we assist schools in securing operations, improving communication, and modernizing public branding.
               </p>
@@ -118,43 +118,52 @@ export default function WhyGridaan({
           PART B: OUR MISSION (Light Section with orange accents)
           ======================================================== */}
       {showPartB && (
-        <section className="bg-white py-20 lg:py-24 px-6 lg:px-[56px]">
-          <div className="max-w-7xl mx-auto w-full">
+        <section className="bg-[#0031AD] py-12 lg:py-16 px-6 lg:px-[56px] relative">
+          {/* Subtle grid accent */}
+          <div 
+            className="absolute inset-0 pointer-events-none opacity-[0.03]" 
+            style={{
+              backgroundImage: 'repeating-linear-gradient(45deg, #ffffff 0px, #ffffff 1px, transparent 1px, transparent 24px)',
+              backgroundSize: '32px 32px'
+            }}
+          />
+
+          <div className="max-w-7xl mx-auto w-full relative z-10">
             
-            <div className="flex flex-col items-center text-center mb-16 select-none" id="mission-heading">
-              <p className="font-sans font-medium text-[11px] tracking-[2.5px] uppercase text-[#ff6a00] mb-3">
+            <div className="flex flex-col items-center text-center mb-10 select-none" id="mission-heading">
+              <p className="font-sans font-bold text-[10px] tracking-[2.5px] uppercase text-sky-300 mb-2.5">
                 PRODUCT PHILOSOPHY
               </p>
-              <h3 className="font-display font-semibold text-[30px] sm:text-[36px] text-[#1a2a4a] tracking-[-0.1px] leading-[1.35]">
-                Operational Metrics <span className="text-brand-red font-bold">Designed</span> for Zero-Friction
+              <h3 className="font-display font-semibold text-[26px] sm:text-[32px] text-white tracking-[-0.1px] leading-[1.35]">
+                Operational Metrics <span className="text-yellow-300 font-bold">Designed</span> for Zero-Friction
               </h3>
-              <div className="w-12 h-0.5 bg-brand-red mt-5 rounded-full" />
+              <div className="w-12 h-[3px] bg-gradient-to-r from-brand-red to-sky-400 mt-4 rounded-full" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6" id="capabilities-cards-list">
               {CAPABILITIES.map((cap) => (
                 <div
                   key={cap.id}
-                  className="bg-bg-offwhite border border-gray-100 rounded-[16px] p-8 flex flex-col justify-between transition-all duration-300 hover:border-brand-red group shadow-[0_4px_24px_rgba(230,48,48,0.01)] hover:shadow-md"
+                  className="bg-white border border-transparent rounded-[16px] p-6.5 flex flex-col justify-between transition-all duration-300 hover:border-brand-red group shadow-[0_12px_36px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_48px_rgba(0,0,0,0.2)] hover:-translate-y-1"
                 >
                   <div>
-                    <div className="flex items-baseline mb-4">
-                      {/* Number is red, Suffix is orange per specification */}
-                      <span className="font-display font-extrabold text-[44px] text-brand-red tracking-tight leading-none">
+                    <div className="flex items-baseline mb-3">
+                      {/* Number is red, Suffix is blue per specification */}
+                      <span className="font-display font-extrabold text-[40px] text-brand-red tracking-tight leading-none">
                         {cap.num}
                       </span>
-                      <span className="font-display font-bold text-[28px] text-brand-orange ml-0.5">
+                      <span className="font-display font-bold text-[24px] text-[#0031AD] ml-0.5">
                         {cap.suffix}
                       </span>
                     </div>
                     
                     {/* Label: Upper, bold, spaced */}
-                    <h4 className="font-sans font-bold text-[11px] text-slate-500 tracking-[1.5px] uppercase mb-3.5 group-hover:text-brand-red transition-colors font-bold">
+                    <h4 className="font-sans font-bold text-[10.5px] text-slate-500 tracking-[1.5px] uppercase mb-3 transition-colors group-hover:text-brand-red">
                       {cap.label}
                     </h4>
                   </div>
 
-                  <p className="font-sans font-normal text-gray-600 text-[13.5px] leading-relaxed">
+                  <p className="font-sans font-normal text-gray-600 text-[13px] leading-relaxed">
                     {cap.text}
                   </p>
                 </div>

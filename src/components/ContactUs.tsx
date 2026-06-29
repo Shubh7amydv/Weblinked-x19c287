@@ -112,22 +112,22 @@ export default function ContactUs() {
   const contactInfos = [
     {
       title: 'Sales & Systems Demo',
-      detail1: '+91 97421 XXXXX',
-      detail2: 'sales@gridaan.com',
-      icon: PhoneCall,
+      detail1: 'info@dettroin.com',
+      detail2: '',
+      icon: Mail,
       time: '09:00 AM - 07:00 PM'
     },
     {
       title: 'Ground R&D Office',
-      detail1: '302, Iscon Crossroad Heights,',
-      detail2: 'Satellite Road, Ahmedabad, India',
+      detail1: 'Delhi,',
+      detail2: 'India',
       icon: MapPin,
-      time: 'Gujarat State Headquarters'
+      time: 'National Operations'
     },
     {
       title: 'Institutional Support',
-      detail1: '24/7 Priority Helpline',
-      detail2: 'support@gridaan.com',
+      detail1: 'info@dettroin.com',
+      detail2: '',
       icon: Mail,
       time: 'Always Accessible'
     }
@@ -150,9 +150,9 @@ export default function ContactUs() {
             <p className="font-sans font-medium text-[11px] tracking-[2.5px] uppercase text-[#1563c7]">
               OPERATION HUB
             </p>
-            <h2 className="font-display font-bold text-[36px] sm:text-[44px] leading-[1.18] text-[#1a2a4a] tracking-[-0.5px]">
+            <h1 className="font-display font-bold text-[36px] sm:text-[44px] leading-[1.18] text-[#1a2a4a] tracking-[-0.5px]">
               Let's <span className="text-[#1563c7] font-bold">Modernize</span> Your <span className="text-brand-red font-bold">Campus Roster</span> Together
-            </h2>
+            </h1>
             <div className="w-12 h-0.5 bg-brand-red rounded-full" />
             <p className="font-sans font-normal text-gray-500 text-[14.5px] sm:text-[15.5px] leading-relaxed max-w-xl">
               Connect with India's premium School systems operations desk. Use the form to lock in a sandbox test or speak with an engineer about migrating your paper files into our cloud.
@@ -189,9 +189,11 @@ export default function ContactUs() {
                     <p className="font-sans font-semibold text-brand-red text-[12px] mt-1.5 truncate">
                       {info.detail1}
                     </p>
-                    <p className="font-sans font-semibold text-brand-red text-[12px] truncate">
-                      {info.detail2}
-                    </p>
+                    {info.detail2 && (
+                      <p className="font-sans font-semibold text-brand-red text-[12px] truncate">
+                        {info.detail2}
+                      </p>
+                    )}
                   </div>
 
                   <div className="flex items-center gap-1 mt-3 text-gray-400 font-sans text-[10px] font-bold select-none">

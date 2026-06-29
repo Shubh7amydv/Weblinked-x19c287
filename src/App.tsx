@@ -109,6 +109,7 @@ export default function App() {
 
     // Dynamic state metadata update
     document.title = title;
+    document.querySelector('link[rel="canonical"]').setAttribute('href', 'https://dettroin.com' + window.location.pathname);
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
       metaDesc = document.createElement('meta');
@@ -178,7 +179,7 @@ export default function App() {
             {/* 8. SECTION 12 — Inline CTA Banner (Contrast blue background) */}
             <section 
               id="cta-enrollment-banner" 
-              className="relative bg-[#1d4ed8] py-16 md:py-20 px-6 lg:px-[56px] text-white overflow-hidden"
+              className="relative bg-[#1d4ed8] py-8 md:py-10 px-6 lg:px-[56px] text-white overflow-hidden"
             >
               {/* Subtle diagonal stripe accent */}
               <div 
@@ -294,11 +295,11 @@ export default function App() {
           <div className="max-w-7xl mx-auto py-16 px-6 lg:px-[56px] select-none text-[#1a1a1a]">
             {/* Header portion */}
             <div className="text-center max-w-2xl mx-auto mb-16 animate-fade-in">
-              <span className="font-sans font-bold text-[10px] sm:text-[11px] text-[#566c37] uppercase tracking-widest bg-[#566c37]/8 px-4 py-1.5 rounded-full inline-block mb-3">
+              <span className="font-sans font-bold text-[10px] sm:text-[11px] text-[#D90707] uppercase tracking-widest bg-[#D90707]/8 px-4 py-1.5 rounded-full inline-block mb-3">
                 TAILORED IMPLEMENTATION QUOTES
               </span>
               <h2 className="font-display font-black text-[32px] sm:text-[44px] leading-tight text-[#1a2a4a] tracking-tight">
-                Honest, Custom Packaging<br />For Academic Systems
+                Honest, Custom Packaging<br />For <span className="text-[#D90707]">Academic Systems</span>
               </h2>
               <p className="font-sans text-gray-500 text-[14px] sm:text-[15.5px] leading-relaxed mt-4">
                 No setup fees. No fixed template overheads. Contact our system implementation officers to lock in a customized proposal and real bid tuned for your regional, CBSE, or ICSE school networks.
@@ -308,32 +309,32 @@ export default function App() {
             {/* Pricing cards grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Tier 1: Small/Play schools */}
-              <div className="bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-[#566c37]/30 transition-all flex flex-col justify-between relative shadow-sm hover:shadow-md">
+              <div className="bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-brand-red/30 transition-all flex flex-col justify-between relative shadow-sm hover:shadow-md">
                 <div>
                   <h3 className="font-display font-bold text-xl text-[#1a2a4a]">Swaraj Tier</h3>
                   <p className="font-sans text-xs text-gray-400 mt-1">Perfect for rural, local regional private institutions and play schools.</p>
                   
                   <div className="my-6">
-                    <span className="font-sans font-bold text-[14px] text-[#566c37] bg-[#566c37]/5 px-3.5 py-2.5 rounded-lg border border-[#566c37]/15 inline-block w-full text-center">
+                    <span className="font-sans font-bold text-[14px] text-brand-red bg-brand-red/5 px-3.5 py-2.5 rounded-lg border border-brand-red/15 inline-block w-full text-center">
                       Contact Us for Real Bid
                     </span>
                   </div>
 
                   <ul className="space-y-3.5 border-t border-gray-100 pt-6">
                     <li className="flex items-start gap-2.5 text-xs text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#0031AD] shrink-0 mt-0.5" />
                       <span>Standard admission & invoice portals</span>
                     </li>
                     <li className="flex items-start gap-2.5 text-xs text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#0031AD] shrink-0 mt-0.5" />
                       <span>CBSE report card generators</span>
                     </li>
                     <li className="flex items-start gap-2.5 text-xs text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#0031AD] shrink-0 mt-0.5" />
                       <span>Manual biometric attendance upload</span>
                     </li>
                     <li className="flex items-start gap-2.5 text-xs text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#0031AD] shrink-0 mt-0.5" />
                       <span>Email audit reports support</span>
                     </li>
                   </ul>
@@ -350,8 +351,8 @@ export default function App() {
               </div>
 
               {/* Tier 2: Premium (Most Popular) */}
-              <div className="bg-white rounded-2xl p-8 border-2 border-[#566c37]/45 hover:border-[#566c37] transition-all flex flex-col justify-between relative shadow-lg" style={{ boxShadow: '0 20px 40px rgba(86,108,55,0.06)' }}>
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#566c37] text-white text-[9.5px] tracking-wider uppercase font-extrabold px-3 py-1 rounded-full whitespace-nowrap">
+              <div className="bg-white rounded-2xl p-8 border-2 border-brand-red/45 hover:border-brand-red transition-all flex flex-col justify-between relative shadow-lg" style={{ boxShadow: '0 20px 40px rgba(217,7,7,0.06)' }}>
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D90707] text-white text-[9.5px] tracking-wider uppercase font-extrabold px-3 py-1 rounded-full whitespace-nowrap">
                   RECOMMENDED VOLUME
                 </span>
                 
@@ -363,26 +364,26 @@ export default function App() {
                   <p className="font-sans text-xs text-gray-400 mt-1">The optimized solution for most CBSE, ICSE, and state credentialed schools in India.</p>
                   
                   <div className="my-6">
-                    <span className="font-sans font-extrabold text-[14px] text-white bg-[#566c37] px-3.5 py-2.5 rounded-lg border border-[#566c37] inline-block w-full text-center hover:bg-[#3d4d27] transition-all">
+                    <span className="font-sans font-extrabold text-[14px] text-white bg-brand-red px-3.5 py-2.5 rounded-lg border border-brand-red inline-block w-full text-center hover:bg-brand-red-hover transition-all">
                       Contact Us for Real Bid
                     </span>
                   </div>
 
                   <ul className="space-y-3.5 border-t border-gray-100 pt-6">
                     <li className="flex items-start gap-2.5 text-xs text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#0031AD] shrink-0 mt-0.5" />
                       <strong>Automated WhatsApp Fee Delivery</strong>
                     </li>
                     <li className="flex items-start gap-2.5 text-xs text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#0031AD] shrink-0 mt-0.5" />
                       <strong>Bilingual Parents Portal PWA App</strong>
                     </li>
                     <li className="flex items-start gap-2.5 text-xs text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#0031AD] shrink-0 mt-0.5" />
                       <span>Live biometric thumb scanning hook</span>
                     </li>
                     <li className="flex items-start gap-2.5 text-xs text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#0031AD] shrink-0 mt-0.5" />
                       <span>Automatic active GPS bus live maps</span>
                     </li>
                   </ul>
@@ -391,7 +392,7 @@ export default function App() {
                 <div className="mt-8">
                   <button 
                     onClick={() => setIsDemoModalOpen(true)}
-                    className="w-full py-3 text-xs font-bold text-white bg-[#566c37] hover:bg-[#3d4d27] rounded-lg transition-all shadow-md shadow-[#566c37]/10"
+                    className="w-full py-3 text-xs font-bold text-white bg-brand-red hover:bg-brand-red-hover rounded-lg transition-all shadow-md shadow-brand-red/10"
                   >
                     Initiate Setup Protocol
                   </button>
@@ -399,32 +400,32 @@ export default function App() {
               </div>
 
               {/* Tier 3: Enterprise */}
-              <div className="bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-[#566c37]/30 transition-all flex flex-col justify-between relative shadow-sm hover:shadow-md">
+              <div className="bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-brand-blue/30 transition-all flex flex-col justify-between relative shadow-sm hover:shadow-md">
                 <div>
                   <h3 className="font-display font-bold text-xl text-[#1a2a4a]">Enterprise Scale</h3>
                   <p className="font-sans text-xs text-gray-400 mt-1">Custom operations scale for major school groups (10,000+ students combined).</p>
                   
                   <div className="my-6">
-                    <span className="font-sans font-bold text-[14px] text-[#566c37] bg-[#566c37]/5 px-3.5 py-2.5 rounded-lg border border-[#566c37]/15 inline-block w-full text-center">
+                    <span className="font-sans font-bold text-[14px] text-brand-blue bg-brand-blue/5 px-3.5 py-2.5 rounded-lg border border-brand-blue/15 inline-block w-full text-center">
                       Contact Us for Real Bid
                     </span>
                   </div>
 
                   <ul className="space-y-3.5 border-t border-gray-100 pt-6">
                     <li className="flex items-start gap-2.5 text-xs text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#0031AD] shrink-0 mt-0.5" />
                       <span>Custom native Android & iOS app builds</span>
                     </li>
                     <li className="flex items-start gap-2.5 text-xs text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#0031AD] shrink-0 mt-0.5" />
                       <span>Dedicated hosting virtualization clusters</span>
                     </li>
                     <li className="flex items-start gap-2.5 text-xs text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#0031AD] shrink-0 mt-0.5" />
                       <span>Direct WhatsApp Business API onboarding</span>
                     </li>
                     <li className="flex items-start gap-2.5 text-xs text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-[#0031AD] shrink-0 mt-0.5" />
                       <span>24/7 dedicated support relationship account manager</span>
                     </li>
                   </ul>

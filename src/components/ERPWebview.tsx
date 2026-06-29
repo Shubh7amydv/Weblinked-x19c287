@@ -183,20 +183,20 @@ export default function ERPWebview() {
   return (
     <section 
       id="sandbox" 
-      className="bg-brand-red-light py-20 lg:py-24 px-6 lg:px-[56px] relative"
+      className="bg-[#0031AD] py-10 lg:py-12 px-6 lg:px-[56px] relative"
     >
       <div className="max-w-7xl mx-auto w-full">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-12 select-none" id="demo-section-header">
-          <p className="font-sans font-medium text-[10px] tracking-[2.5px] uppercase text-[#ff6a00] opacity-80 mb-3">
+          <p className="font-sans font-semibold text-[10px] tracking-[2.5px] uppercase text-sky-300 mb-3">
             LIVE INTERACTIVE PLAYGROUND
           </p>
-          <h2 className="font-display font-semibold text-[34px] sm:text-[38px] text-[#D90707] tracking-[-0.15px] leading-[1.3] max-w-2xl">
-            Experience our Operational Console in <span className="font-bold text-[#1a2a4a]">Real-Time</span>
+          <h2 className="font-display font-semibold text-[34px] sm:text-[38px] text-white tracking-[-0.15px] leading-[1.3] max-w-2xl">
+            Experience your school on dashboard in <span className="font-bold text-sky-300">Real-Time</span>
           </h2>
-          <div className="w-12 h-0.5 bg-brand-red mt-5 rounded-full" />
-          <p className="font-sans font-normal text-gray-500 text-[15px] sm:text-[16px] max-w-xl mt-4">
+          <div className="w-12 h-0.5 bg-sky-400 mt-5 rounded-full" />
+          <p className="font-sans font-normal text-blue-100 text-[15px] sm:text-[16px] max-w-xl mt-4">
             Test real-world tasks like managing parent notifications, matching fees, tracking buses, and toggling schedules on our interactive demo box.
           </p>
         </div>

@@ -3,26 +3,36 @@ import { WHY_CHOOSE_US_ROWS } from '../data';
 
 export default function WhyChooseUs() {
   return (
-    <section 
-      id="why-us" 
-      className="bg-white py-20 lg:py-24 px-6 lg:px-[56px] relative"
-    >
-      <div className="max-w-7xl mx-auto w-full">
-        
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16 select-none" id="why-choose-us-heading">
-          <p className="font-sans font-medium text-[11px] tracking-[2.5px] uppercase text-[#D90707] mb-3">
+    <div id="why-choose-us-container">
+      {/* Full Width Red Header Band */}
+      <div className="bg-gradient-to-r from-[#D90707] to-[#A30505] pt-4 lg:pt-5 pb-6 px-6 lg:px-[56px] text-center text-white relative select-none">
+        {/* Subtle grid lines background pattern */}
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-[0.05]" 
+          style={{
+            backgroundImage: 'repeating-linear-gradient(45deg, #ffffff 0px, #ffffff 1px, transparent 1px, transparent 24px)',
+            backgroundSize: '32px 32px'
+          }}
+        />
+        <div className="max-w-4xl mx-auto relative z-10">
+          <p className="font-sans font-bold text-[10px] tracking-[2.5px] uppercase text-red-200 mb-2.5">
             CAMPUS STABILIZATION
           </p>
-          <h2 className="font-display font-bold tracking-[-0.5px] leading-[1.15] max-w-2xl">
-            <span className="block text-[38px] sm:text-[46px] text-[#1a2a4a]">Why Hundreds of Premium Academies</span>
-            <span className="block text-[38px] sm:text-[46px] text-brand-red mt-1">Trust Dettroin ERP</span>
-          </h2>
-          <div className="w-12 h-0.5 bg-brand-red mt-5 rounded-full" />
-          <p className="font-sans font-normal text-gray-500 text-[15px] sm:text-[16px] max-w-xl mt-4">
+          <h1 className="font-display font-extrabold text-[30px] sm:text-[38px] tracking-tight leading-[1.2]">
+            Why Hundreds of <span className="text-yellow-300 font-black">Premium Academies</span> Trust Dettroin ERP
+          </h1>
+          <p className="font-sans font-medium text-red-100/90 text-[13.5px] sm:text-[14.5px] leading-relaxed mt-4 max-w-2xl mx-auto">
             Engineered specifically to solve operational challenges for Indian schools, trust authorities, parents, and transportation boards.
           </p>
         </div>
+      </div>
+
+      {/* Feature alternating rows */}
+      <section 
+        id="why-us" 
+        className="bg-white py-12 lg:py-16 px-6 lg:px-[56px] relative"
+      >
+        <div className="max-w-7xl mx-auto w-full">
 
         {/* Feature alternating rows */}
         <div className="space-y-16 lg:space-y-24" id="choose-rows-list">
@@ -40,28 +50,17 @@ export default function WhyChooseUs() {
                   }`}
                   id={`choose-row-${row.id}-visual`}
                 >
-                  <div className="bg-[#fafafa] rounded-[24px] p-5 md:p-8 border border-gray-100 shadow-[0_12px_40px_rgba(230,48,48,0.02)] transition-transform hover:scale-[1.01]">
+                  <div className="bg-[#fafafa] rounded-[24px] p-4 md:p-6 border border-gray-100 shadow-[0_12px_40px_rgba(230,48,48,0.02)] transition-transform hover:scale-[1.01]">
                     {/* Inner Content Card with illustration */}
                     <div className="bg-white rounded-2xl border border-gray-200/60 overflow-hidden shadow-sm">
-                      <div className="relative h-[240px] overflow-hidden">
+                      <div className="relative aspect-[4/5] overflow-hidden">
                         <img 
                           src={row.imageUrl} 
                           alt={row.alt}
-                          className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-104"
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-103"
                           referrerPolicy="no-referrer"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
-                      </div>
-                      
-                      {/* Thumbnail floating footer tag */}
-                      <div className="p-4 bg-[#fafafa] border-t border-gray-100 flex items-center justify-between select-none">
-                        <span className="font-mono text-[9px] font-bold text-gray-400 uppercase tracking-widest">
-                          ⚡ CLOUD DATABASE AUTO-SYNC
-                        </span>
-                        <div className="flex items-center gap-1">
-                          <span className="w-2 h-2 bg-[#28c840] rounded-full inline-block animate-ping" />
-                          <span className="font-sans text-[10.5px] font-semibold text-gray-500">Connected System</span>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -118,5 +117,6 @@ export default function WhyChooseUs() {
 
       </div>
     </section>
+  </div>
   );
 }

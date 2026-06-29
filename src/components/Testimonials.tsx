@@ -5,13 +5,13 @@ export default function Testimonials() {
   return (
     <section 
       id="testimonials" 
-      className="bg-[#f8f9fb] pt-2 pb-20 lg:pt-2 lg:pb-24 px-6 lg:px-[56px]"
+      className="bg-[#f8f9fb] pt-8 pb-10 lg:pt-10 lg:pb-12 px-6 lg:px-[56px]"
     >
       <div className="max-w-7xl mx-auto w-full font-sans">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-10 select-none animate-fade-in" id="testimonials-header">
-          <span className="font-display font-black text-[54px] md:text-[64px] text-[#ff6a00] leading-[0.5] block mb-2 opacity-50">"</span>
+          <span className="font-display font-black text-[54px] md:text-[64px] text-[#ff6a00] leading-none block mb-2 opacity-50">"</span>
           <p className="font-sans font-medium text-[10px] tracking-[2px] uppercase text-[#ff6a00] mb-3">
             VERIFIED FEEDBACK
           </p>

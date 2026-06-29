@@ -168,29 +168,29 @@ export default function ERPBenefits({ onCtasClick, hideTrustBar }: ERPBenefitsPr
   return (
     <section 
       id="benefits" 
-      className="bg-[#f8f9fb] pt-16 pb-4 md:pt-[100px] md:pb-8 px-6 lg:px-[56px] relative select-none"
+      className="bg-[#f8f9fb] pt-8 pb-3 md:pt-[44px] md:pb-4 px-6 lg:px-[56px] relative select-none"
     >
       <div className="max-w-[1240px] mx-auto w-full">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16 max-w-[600px] mx-auto" id="benefits-header">
+        <div className="flex flex-col items-center text-center mb-10 max-w-[600px] mx-auto" id="benefits-header">
           <div className="flex items-center gap-2 mb-3 justify-center">
             <div className="w-6 h-[2px] bg-[#1563c7] rounded-full" />
             <span className="font-sans font-semibold text-[11px] tracking-[2.5px] uppercase text-[#1563c7]">
               The Numbers Don't Lie
             </span>
           </div>
-          <h2 className="font-display font-semibold tracking-[-0.25px] leading-[1.22] text-center select-none">
-            <span className="block text-[36px] sm:text-[42px] text-[#1a2a4a]">What Changes When Your School</span>
-            <span className="block text-[40px] sm:text-[46px] font-bold text-[#1563c7] mt-1">Goes Digital</span>
+          <h2 className="font-display font-semibold tracking-[-0.15px] leading-[1.3] text-center select-none">
+            <span className="block text-[28px] sm:text-[34px] text-[#1a2a4a]">What Changes When Your School</span>
+            <span className="block text-[32px] sm:text-[38px] font-bold text-[#1563c7] mt-1">Goes Digital</span>
           </h2>
-          <p className="font-sans font-normal text-[#6b7280] text-[15px] sm:text-[17px] leading-[1.8] mt-4">
+          <p className="font-sans font-normal text-[#6b7280] text-[14px] sm:text-[15.5px] leading-[1.7] mt-3">
             Schools on Dettroin ERP report measurable improvements within 90 days — across admin efficiency, fee recovery, parent trust, and staff productivity.
           </p>
         </div>
 
         {/* Big Stats Row */}
-        <div className="bg-[#1563c7] rounded-[20px] p-8 md:p-[56px_48px] mb-16 shadow-[0_20px_40px_rgba(21,99,199,0.12)] relative overflow-hidden" id="benefits-stats-row">
+        <div className="bg-[#1563c7] rounded-[20px] p-6 md:p-10 mb-10 shadow-[0_20px_40px_rgba(21,99,199,0.12)] relative overflow-hidden" id="benefits-stats-row">
           {/* Subtle background strip stripes */}
           <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.02)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.02)_50%,rgba(255,255,255,0.02)_75%,transparent_75%,transparent)] bg-[size:32px_32px] pointer-events-none opacity-40" />
           
@@ -214,7 +214,7 @@ export default function ERPBenefits({ onCtasClick, hideTrustBar }: ERPBenefitsPr
         </div>
 
         {/* Benefit Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="benefits-cards-grid">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10" id="benefits-cards-grid">
           {cardsData.map((card, idx) => {
             const IconComponent = card.icon;
             return (
@@ -225,7 +225,7 @@ export default function ERPBenefits({ onCtasClick, hideTrustBar }: ERPBenefitsPr
                 whileInView="visible"
                 viewport={{ once: true, margin: '-50px' }}
                 variants={cardVariants}
-                className="bg-white border border-[#e2e8f0] rounded-[14px] p-8 flex flex-col justify-between transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1.5 group border-t-3 border-t-[#1563c7] hover:border-t-[#ff6a00]"
+                className="bg-white border border-[#e2e8f0] rounded-[14px] p-6 flex flex-col justify-between transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1.5 group border-t-3 border-t-[#1563c7] hover:border-t-[#ff6a00]"
               >
                 <div>
                   {/* Top row */}
@@ -262,7 +262,7 @@ export default function ERPBenefits({ onCtasClick, hideTrustBar }: ERPBenefitsPr
         {/* Bottom Trust Bar */}
         {!hideTrustBar && (
           <div 
-            className="bg-white border border-[#e2e8f0] rounded-[14px] p-7 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-[0_4px_30px_rgba(0,0,0,0.015)]"
+            className="bg-white border border-[#e2e8f0] rounded-[14px] p-5 md:p-7 flex flex-col md:flex-row items-center justify-between gap-6 shadow-[0_4px_30px_rgba(0,0,0,0.015)]"
             id="benefits-trust-bar"
           >
             <p className="font-display font-semibold text-[16px] sm:text-[18px] text-[#1a2a4a] text-center md:text-left leading-snug">

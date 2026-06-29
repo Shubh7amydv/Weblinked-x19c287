@@ -32,9 +32,9 @@ export default function Header({ onCtasClick, activePage, onPageChange }: Header
   };
 
   const menuItems = [
-    { label: 'Overview', id: 'home' },
+    { label: 'Home', id: 'home' },
     { label: 'ERP System', id: 'erp-system' },
-    { label: 'Why Dettroin ?', id: 'why-gridaan' },
+    { label: 'Why Dettroin', id: 'why-gridaan' },
     { label: 'Web Portals', id: 'web-portals' },
     { label: 'Pricing', id: 'pricing' },
     { label: 'FAQs & Contact', id: 'faqs-contact' },

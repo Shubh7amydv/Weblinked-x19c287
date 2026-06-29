@@ -15,7 +15,7 @@ export default function MobileApps() {
   return (
     <section 
       id="mobile-apps" 
-      className="relative py-20 lg:py-24 px-6 lg:px-[56px] text-white overflow-hidden"
+      className="relative py-10 lg:py-12 px-6 lg:px-[56px] text-white overflow-hidden"
       style={{
         background: 'linear-gradient(135deg, #D90707 0%, #9E0505 100%)'
       }}
