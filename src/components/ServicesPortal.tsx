@@ -102,13 +102,6 @@ export default function ServicesPortal({ onPageChange, onCtasClick }: ServicesPo
     }
   ];
 
-  const handleScrollToDemos = () => {
-    const target = document.getElementById('demos-section');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const handleGetInTouch = () => {
     if (onPageChange) {
       onPageChange('faqs-contact');
@@ -121,47 +114,55 @@ export default function ServicesPortal({ onPageChange, onCtasClick }: ServicesPo
     }, 100);
   };
 
+  const handleScrollToDemos = () => {
+    const target = document.getElementById('demos-section');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div id="web-portals-page" className="bg-bg-offwhite min-h-screen">
 
       {/* ========================================================
-          1. HERO SECTION (Top of Page)
+          1. HERO SECTION (Top of Page - Modern Design from Screenshot)
           ======================================================== */}
       <section 
-        className="relative pt-4 lg:pt-5 pb-6 px-6 lg:px-[56px] text-center overflow-hidden flex flex-col items-center justify-center text-white select-none"
+        className="relative py-6 lg:py-8 px-6 lg:px-[56px] text-center overflow-hidden flex flex-col items-center justify-center bg-white select-none border-b border-gray-100"
         style={{
-          background: 'linear-gradient(to right, #D90707, #A30505)'
+          background: 'radial-gradient(circle at center, #fffafa 0%, #fff3f3 100%)'
         }}
       >
         {/* Subtle grid lines background pattern */}
         <div 
-          className="absolute inset-0 pointer-events-none opacity-[0.05]" 
+          className="absolute inset-0 pointer-events-none opacity-[0.16]" 
           style={{
-            backgroundImage: 'repeating-linear-gradient(45deg, #ffffff 0px, #ffffff 1px, transparent 1px, transparent 24px)',
-            backgroundSize: '32px 32px'
+            backgroundImage: 'linear-gradient(to right, #e63030 1px, transparent 1px), linear-gradient(to bottom, #e63030 1px, transparent 1px)',
+            backgroundSize: '28px 28px'
           }}
         />
         
         <div className="max-w-4xl mx-auto relative z-10">
-          <p className="font-sans font-bold text-[10px] tracking-[2.5px] uppercase text-red-200 mb-2.5">
+          <p className="font-sans font-bold text-[11px] tracking-[2.5px] uppercase text-brand-red mb-3.5">
             PORTFOLIO SHOWCASE
           </p>
-          <h1 className="font-display font-extrabold text-[30px] sm:text-[38px] tracking-tight leading-[1.2]">
-            We Don't Just Build Websites. We Build <span className="text-yellow-300 font-black">Digital Identities</span>
+          <h1 className="font-sans font-black text-[38px] sm:text-[50px] leading-[1.12] text-[#1a1a1a] tracking-tight max-w-4xl mx-auto">
+            We Don't Just Build Websites.<br />
+            We Build <span className="text-brand-red font-black">Digital Identities.</span>
           </h1>
-          <p className="font-sans font-medium text-red-100/90 text-[13.5px] sm:text-[14.5px] leading-relaxed mt-4 max-w-2xl mx-auto">
+          <p className="font-sans font-normal text-gray-500 text-[15px] sm:text-[16px] leading-relaxed mt-6 max-w-2xl mx-auto">
             Every school, every institution, every business has a story. Dettroin turns that story into a web experience your audience remembers. Browse our live school portal demos below — fully functional, fully interactive.
           </p>
           
-          <div className="pt-6 flex justify-center">
+          <div className="mt-12 flex flex-col items-center gap-2">
             <button
               onClick={handleScrollToDemos}
-              className="group flex flex-col items-center gap-2 font-sans font-semibold text-xs uppercase tracking-widest text-white hover:text-yellow-300 transition-colors focus:outline-none cursor-pointer"
+              className="group flex flex-col items-center gap-2.5 font-sans font-bold text-[10px] tracking-[2.5px] uppercase text-gray-500 hover:text-brand-red transition-colors focus:outline-none cursor-pointer"
               aria-label="Scroll to interactive demos"
             >
               <span>Explore Live Demos</span>
-              <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center bg-white/10 shadow-xs group-hover:border-yellow-300 transition-all duration-200">
-                <ChevronDown className="w-4 h-4 text-white group-hover:text-yellow-300 transition-colors group-hover:translate-y-0.5 transform duration-200" />
+              <div className="w-8 h-8 rounded-full border border-gray-200/80 bg-white flex items-center justify-center shadow-xs group-hover:border-brand-red group-hover:shadow-sm transition-all duration-200">
+                <ChevronDown className="w-4 h-4 text-gray-400 group-hover:text-brand-red transition-colors group-hover:translate-y-0.5 transform duration-200" />
               </div>
             </button>
           </div>
@@ -202,7 +203,7 @@ export default function ServicesPortal({ onPageChange, onCtasClick }: ServicesPo
                       {demo.label}
                     </span>
                   </div>
-                  <h3 className="font-display font-extrabold text-[28px] sm:text-[34px] text-white leading-tight tracking-tight">
+                  <h3 className="font-sans font-extrabold text-[28px] sm:text-[34px] text-white leading-tight tracking-tight">
                     {demo.heading}
                   </h3>
                   <p className="font-sans font-normal text-blue-100/95 text-[14.5px] sm:text-[15.5px] leading-relaxed">
@@ -309,7 +310,7 @@ export default function ServicesPortal({ onPageChange, onCtasClick }: ServicesPo
             <span className="font-sans font-bold text-[10px] tracking-[2.5px] uppercase text-[#0031AD] block mb-2.5">
               OUR STANDARDS
             </span>
-            <h2 className="font-display font-extrabold text-[28px] sm:text-[36px] text-[#1a2a4a] tracking-tight leading-tight">
+            <h2 className="font-sans font-extrabold text-[28px] sm:text-[36px] text-[#1a2a4a] tracking-tight leading-tight">
               An <span className="text-brand-red">Architectural Approach</span> to Web Development
             </h2>
           </div>
@@ -318,10 +319,10 @@ export default function ServicesPortal({ onPageChange, onCtasClick }: ServicesPo
 
             {/* Column 01 */}
             <div className="bg-white rounded-2xl p-6 border border-gray-150/60 shadow-[0_8px_30px_rgba(0,0,0,0.015)] transition-all hover:scale-[1.01] hover:shadow-md hover:border-brand-red/20 space-y-4" id="trust-col-1">
-              <div className="font-display font-black text-brand-red text-4xl select-none leading-none">
+              <div className="font-sans font-black text-brand-red text-4xl select-none leading-none">
                 01
               </div>
-              <h4 className="font-display font-bold text-lg text-[#1a2a4a] tracking-tight">
+              <h4 className="font-sans font-bold text-lg text-[#1a2a4a] tracking-tight">
                 Tailored Design
               </h4>
               <p className="font-sans font-normal text-gray-500 text-[13.5px] sm:text-[14px] leading-relaxed">
@@ -331,10 +332,10 @@ export default function ServicesPortal({ onPageChange, onCtasClick }: ServicesPo
 
             {/* Column 02 */}
             <div className="bg-white rounded-2xl p-6 border border-gray-150/60 shadow-[0_8px_30px_rgba(0,0,0,0.015)] transition-all hover:scale-[1.01] hover:shadow-md hover:border-brand-red/20 space-y-4" id="trust-col-2">
-              <div className="font-display font-black text-brand-red text-4xl select-none leading-none">
+              <div className="font-sans font-black text-brand-red text-4xl select-none leading-none">
                 02
               </div>
-              <h4 className="font-display font-bold text-lg text-[#1a2a4a] tracking-tight">
+              <h4 className="font-sans font-bold text-lg text-[#1a2a4a] tracking-tight">
                 End-to-End Delivery
               </h4>
               <p className="font-sans font-normal text-gray-500 text-[13.5px] sm:text-[14px] leading-relaxed">
@@ -344,10 +345,10 @@ export default function ServicesPortal({ onPageChange, onCtasClick }: ServicesPo
 
             {/* Column 03 */}
             <div className="bg-white rounded-2xl p-6 border border-gray-150/60 shadow-[0_8px_30px_rgba(0,0,0,0.015)] transition-all hover:scale-[1.01] hover:shadow-md hover:border-brand-red/20 space-y-4" id="trust-col-3">
-              <div className="font-display font-black text-brand-red text-4xl select-none leading-none">
+              <div className="font-sans font-black text-brand-red text-4xl select-none leading-none">
                 03
               </div>
-              <h4 className="font-display font-bold text-lg text-[#1a2a4a] tracking-tight">
+              <h4 className="font-sans font-bold text-lg text-[#1a2a4a] tracking-tight">
                 Ongoing Support
               </h4>
               <p className="font-sans font-normal text-gray-500 text-[13.5px] sm:text-[14px] leading-relaxed">

@@ -109,7 +109,12 @@ export default function App() {
 
     // Dynamic state metadata update
     document.title = title;
-    document.querySelector('link[rel="canonical"]').setAttribute('href', 'https://dettroin.com' + window.location.pathname);
+    
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', 'https://dettroin.com' + window.location.pathname);
+    }
+
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
       metaDesc = document.createElement('meta');
@@ -117,6 +122,40 @@ export default function App() {
       document.head.appendChild(metaDesc);
     }
     metaDesc.setAttribute('content', description);
+
+    // Dynamic metadata tags helpers
+    const updateMetaProperty = (property: string, content: string) => {
+      let meta = document.head.querySelector(`meta[property="${property}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('property', property);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
+
+    const updateMetaName = (name: string, content: string) => {
+      let meta = document.head.querySelector(`meta[name="${name}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('name', name);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
+
+    // Open Graph dynamic updates
+    updateMetaProperty('og:title', title);
+    updateMetaProperty('og:description', description);
+    updateMetaProperty('og:url', window.location.href);
+    updateMetaProperty('og:type', 'website');
+    updateMetaProperty('og:image', 'https://dettroin.com/why-dettroin-1.jpg');
+
+    // Twitter Card dynamic updates
+    updateMetaName('twitter:card', 'summary_large_image');
+    updateMetaName('twitter:title', title);
+    updateMetaName('twitter:description', description);
+    updateMetaName('twitter:image', 'https://dettroin.com/why-dettroin-1.jpg');
   }, [activePage]);
 
   // Demo Form States
@@ -599,6 +638,9 @@ export default function App() {
                 alt="System Tour Film"
                 className="w-full h-full object-cover opacity-85"
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                width="1000"
+                height="562"
               />
               
               {/* Play overlays */}

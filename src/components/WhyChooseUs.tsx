@@ -4,33 +4,42 @@ import { WHY_CHOOSE_US_ROWS } from '../data';
 export default function WhyChooseUs() {
   return (
     <div id="why-choose-us-container">
-      {/* Full Width Red Header Band */}
-      <div className="bg-gradient-to-r from-[#D90707] to-[#A30505] pt-4 lg:pt-5 pb-6 px-6 lg:px-[56px] text-center text-white relative select-none">
+      {/* 1. HERO SECTION (Top of Page - Modern Design with Grid) */}
+      <section 
+        className="relative py-4 lg:py-6 px-6 lg:px-[56px] text-center overflow-hidden flex flex-col items-center justify-center bg-white select-none border-b border-gray-100"
+        style={{
+          background: 'radial-gradient(circle at center, #fffafa 0%, #fff3f3 100%)'
+        }}
+      >
         {/* Subtle grid lines background pattern */}
         <div 
-          className="absolute inset-0 pointer-events-none opacity-[0.05]" 
+          className="absolute inset-0 pointer-events-none opacity-[0.16]" 
           style={{
-            backgroundImage: 'repeating-linear-gradient(45deg, #ffffff 0px, #ffffff 1px, transparent 1px, transparent 24px)',
-            backgroundSize: '32px 32px'
+            backgroundImage: 'linear-gradient(to right, #e63030 1px, transparent 1px), linear-gradient(to bottom, #e63030 1px, transparent 1px)',
+            backgroundSize: '28px 28px'
           }}
         />
+        
         <div className="max-w-4xl mx-auto relative z-10">
-          <p className="font-sans font-bold text-[10px] tracking-[2.5px] uppercase text-red-200 mb-2.5">
+          <p className="font-sans font-bold text-[11px] tracking-[2.5px] uppercase text-[#D90707] mb-2">
             CAMPUS STABILIZATION
           </p>
-          <h1 className="font-display font-extrabold text-[30px] sm:text-[38px] tracking-tight leading-[1.2]">
-            Why Hundreds of <span className="text-yellow-300 font-black">Premium Academies</span> Trust Dettroin ERP
-          </h1>
-          <p className="font-sans font-medium text-red-100/90 text-[13.5px] sm:text-[14.5px] leading-relaxed mt-4 max-w-2xl mx-auto">
+          <h2 className="font-sans font-extrabold text-[36px] sm:text-[44px] leading-[1.18] text-[#1a2a4a] tracking-tight max-w-3xl mx-auto">
+            Why Hundreds of Premium <br />
+            Academies <br />
+            <span className="text-[#1563c7] font-extrabold">Trust Dettroin ERP</span>
+          </h2>
+          <div className="w-12 h-0.5 bg-[#D90707] mt-3.5 mb-3.5 mx-auto rounded-full" />
+          <p className="font-sans font-normal text-gray-500 text-[14.5px] sm:text-[15.5px] max-w-2xl mx-auto leading-relaxed">
             Engineered specifically to solve operational challenges for Indian schools, trust authorities, parents, and transportation boards.
           </p>
         </div>
-      </div>
+      </section>
 
-      {/* Feature alternating rows */}
+      {/* 2. ALTERNATING ROWS SECTION */}
       <section 
         id="why-us" 
-        className="bg-white py-12 lg:py-16 px-6 lg:px-[56px] relative"
+        className="bg-white py-6 lg:py-8 px-6 lg:px-[56px] relative"
       >
         <div className="max-w-7xl mx-auto w-full">
 
@@ -60,6 +69,8 @@ export default function WhyChooseUs() {
                           loading="lazy"
                           className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-103"
                           referrerPolicy="no-referrer"
+                          width="1000"
+                          height="1250"
                         />
                       </div>
                     </div>
@@ -117,6 +128,6 @@ export default function WhyChooseUs() {
 
       </div>
     </section>
-  </div>
+    </div>
   );
 }
